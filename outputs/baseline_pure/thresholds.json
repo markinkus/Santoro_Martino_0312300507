@@ -1,0 +1,15 @@
+{
+  "timestamp": "20260426_125126",
+  "department": {
+    "default": 0.5146964716260277,
+    "F&B": 0.45,
+    "Housekeeping": 0.6440894148780832,
+    "Reception": 0.45
+  },
+  "sentiment": {
+    "default": 0.7645310309273448,
+    "neg": 0.7440484239893331,
+    "pos": 0.7850136378653565
+  },
+  "diagnostic_only": true
+}

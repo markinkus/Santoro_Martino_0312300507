@@ -1,0 +1,181 @@
+id,title,body,department,sentiment
+1,Reclamo urgente - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+2,Segnalazione grave igiene - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+3,Esperienza sanitaria critica - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+4,Segnalazione grave igiene - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+5,Esperienza sanitaria critica - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+6,Reclamo urgente - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+7,Segnalazione grave igiene - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+8,Esperienza sanitaria critica - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+9,Esperienza sanitaria critica - F&B,In cucina ho visto scarafaggi in giro e il cuoco aveva peli sul camice. Odore nauseante e condizioni igieniche pessime.,F&B,neg
+10,Esperienza sanitaria critica - Housekeeping,In camera c'erano acari e in bagno ho trovato muffa vicino alla doccia. La notte siamo stati morsi e la pulizia è stata pessima.,Housekeeping,neg
+11,Situazione inaccettabile - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+12,Situazione inaccettabile - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+13,Segnalazione grave igiene - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+14,Esperienza sanitaria critica - F&B,"Al ristorante situazione grave: scarafaggi in cucina, personale trascurato e igiene insalubre.",F&B,neg
+15,Reclamo urgente - Housekeeping,"Asciugamani sporchi, bagno con muffa e odore nauseante. Igiene pessima per tutta la notte.",Housekeeping,neg
+16,Situazione inaccettabile - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+17,Controllo igiene ok - F&B,"Ristorante curato: nessuno scarafaggio, nessun problema igienico e personale professionale.",F&B,pos
+18,Esperienza sanitaria critica - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+19,Situazione inaccettabile - Housekeeping,In camera c'erano acari e in bagno ho trovato muffa vicino alla doccia. La notte siamo stati morsi e la pulizia è stata pessima.,Housekeeping,neg
+20,Esperienza sanitaria critica - Housekeeping,"Asciugamani sporchi, bagno con muffa e odore nauseante. Igiene pessima per tutta la notte.",Housekeeping,neg
+21,Controllo igiene ok - Housekeeping,"Camera e bagno molto puliti, nessuna muffa e nessun odore forte. Materasso comodo e notte tranquilla.",Housekeeping,pos
+22,Reclamo urgente - Reception,"Reception cortese ma inefficace: nonostante le foto di cimici da letto, nessun intervento e nessun cambio camera.",Reception,neg
+23,Segnalazione grave igiene - F&B,In cucina ho visto scarafaggi in giro e il cuoco aveva peli sul camice. Odore nauseante e condizioni igieniche pessime.,F&B,neg
+24,Reclamo urgente - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+25,Segnalazione grave igiene - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+26,Reclamo urgente - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+27,Situazione inaccettabile - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+28,Situazione inaccettabile - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+29,Reclamo urgente - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+30,Nessuna criticità sanitaria - F&B,"Colazione ben organizzata, nessun odore forte e cucina visibilmente pulita.",F&B,pos
+31,Nessuna criticità sanitaria - Reception,"Reception efficiente: segnalazioni gestite subito, nessuna criticità su igiene camera e supporto rapido.",Reception,pos
+32,Segnalazione grave igiene - F&B,In cucina ho visto scarafaggi in giro e il cuoco aveva peli sul camice. Odore nauseante e condizioni igieniche pessime.,F&B,neg
+33,Segnalazione grave igiene - Housekeeping,"Asciugamani sporchi, bagno con muffa e odore nauseante. Igiene pessima per tutta la notte.",Housekeeping,neg
+34,Situazione inaccettabile - Housekeeping,"Asciugamani sporchi, bagno con muffa e odore nauseante. Igiene pessima per tutta la notte.",Housekeeping,neg
+35,Esperienza sanitaria critica - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+36,Controllo igiene ok - Housekeeping,"Camera e bagno molto puliti, nessuna muffa e nessun odore forte. Materasso comodo e notte tranquilla.",Housekeeping,pos
+37,Segnalazione grave igiene - F&B,"Al ristorante situazione grave: scarafaggi in cucina, personale trascurato e igiene insalubre.",F&B,neg
+38,Nessuna criticità sanitaria - F&B,"Colazione ben organizzata, nessun odore forte e cucina visibilmente pulita.",F&B,pos
+39,Esperienza sanitaria critica - Housekeeping,In camera c'erano acari e in bagno ho trovato muffa vicino alla doccia. La notte siamo stati morsi e la pulizia è stata pessima.,Housekeeping,neg
+40,Situazione inaccettabile - Housekeeping,"Asciugamani sporchi, bagno con muffa e odore nauseante. Igiene pessima per tutta la notte.",Housekeeping,neg
+41,Segnalazione grave igiene - F&B,In cucina ho visto scarafaggi in giro e il cuoco aveva peli sul camice. Odore nauseante e condizioni igieniche pessime.,F&B,neg
+42,Segnalazione grave igiene - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+43,Situazione inaccettabile - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+44,Reclamo urgente - F&B,"Al ristorante situazione grave: scarafaggi in cucina, personale trascurato e igiene insalubre.",F&B,neg
+45,Situazione inaccettabile - Housekeeping,"Asciugamani sporchi, bagno con muffa e odore nauseante. Igiene pessima per tutta la notte.",Housekeeping,neg
+46,Esperienza sanitaria critica - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+47,Reclamo urgente - Housekeeping,In camera c'erano acari e in bagno ho trovato muffa vicino alla doccia. La notte siamo stati morsi e la pulizia è stata pessima.,Housekeeping,neg
+48,Esperienza sanitaria critica - Reception,"Reception cortese ma inefficace: nonostante le foto di cimici da letto, nessun intervento e nessun cambio camera.",Reception,neg
+49,Nessuna criticità sanitaria - Housekeeping,"Controllo accurato: nessun acaro visibile, nessuna cimice e ottima igiene in stanza.",Housekeeping,pos
+50,Situazione inaccettabile - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+51,Controllo igiene ok - F&B,"Colazione ben organizzata, nessun odore forte e cucina visibilmente pulita.",F&B,pos
+52,Reclamo urgente - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+53,Esperienza sanitaria critica - F&B,In cucina ho visto scarafaggi in giro e il cuoco aveva peli sul camice. Odore nauseante e condizioni igieniche pessime.,F&B,neg
+54,Esperienza sanitaria critica - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+55,Reclamo urgente - Reception,"Reception cortese ma inefficace: nonostante le foto di cimici da letto, nessun intervento e nessun cambio camera.",Reception,neg
+56,Reclamo urgente - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+57,Esperienza sanitaria critica - F&B,"Al ristorante situazione grave: scarafaggi in cucina, personale trascurato e igiene insalubre.",F&B,neg
+58,Reclamo urgente - Reception,"Reception cortese ma inefficace: nonostante le foto di cimici da letto, nessun intervento e nessun cambio camera.",Reception,neg
+59,Esperienza sanitaria critica - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+60,Esperienza sanitaria critica - Housekeeping,"Asciugamani sporchi, bagno con muffa e odore nauseante. Igiene pessima per tutta la notte.",Housekeeping,neg
+61,Controllo igiene ok - F&B,"Colazione ben organizzata, nessun odore forte e cucina visibilmente pulita.",F&B,pos
+62,Situazione inaccettabile - Housekeeping,In camera c'erano acari e in bagno ho trovato muffa vicino alla doccia. La notte siamo stati morsi e la pulizia è stata pessima.,Housekeeping,neg
+63,Esperienza sanitaria critica - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+64,Reclamo urgente - Housekeeping,"Asciugamani sporchi, bagno con muffa e odore nauseante. Igiene pessima per tutta la notte.",Housekeeping,neg
+65,Segnalazione grave igiene - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+66,Segnalazione grave igiene - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+67,Esperienza sanitaria critica - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+68,Nessuna criticità sanitaria - Reception,"Reception efficiente: segnalazioni gestite subito, nessuna criticità su igiene camera e supporto rapido.",Reception,pos
+69,Esperienza sanitaria critica - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+70,Esperienza sanitaria critica - Housekeeping,"Asciugamani sporchi, bagno con muffa e odore nauseante. Igiene pessima per tutta la notte.",Housekeeping,neg
+71,Reclamo urgente - F&B,In cucina ho visto scarafaggi in giro e il cuoco aveva peli sul camice. Odore nauseante e condizioni igieniche pessime.,F&B,neg
+72,Situazione inaccettabile - Housekeeping,"Asciugamani sporchi, bagno con muffa e odore nauseante. Igiene pessima per tutta la notte.",Housekeeping,neg
+73,Reclamo urgente - F&B,"Al ristorante situazione grave: scarafaggi in cucina, personale trascurato e igiene insalubre.",F&B,neg
+74,Reclamo urgente - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+75,Esperienza sanitaria critica - Reception,"Reception cortese ma inefficace: nonostante le foto di cimici da letto, nessun intervento e nessun cambio camera.",Reception,neg
+76,Verifica condizioni positive - Housekeeping,"Controllo accurato: nessun acaro visibile, nessuna cimice e ottima igiene in stanza.",Housekeeping,pos
+77,Situazione inaccettabile - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+78,Situazione inaccettabile - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+79,Segnalazione grave igiene - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+80,Segnalazione grave igiene - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+81,Situazione inaccettabile - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+82,Verifica condizioni positive - Reception,"Check in e assistenza ottimi, nessun problema sanitario riscontrato e comunicazione chiara.",Reception,pos
+83,Situazione inaccettabile - Housekeeping,"Asciugamani sporchi, bagno con muffa e odore nauseante. Igiene pessima per tutta la notte.",Housekeeping,neg
+84,Reclamo urgente - Reception,"Reception cortese ma inefficace: nonostante le foto di cimici da letto, nessun intervento e nessun cambio camera.",Reception,neg
+85,Verifica condizioni positive - Reception,"Check in e assistenza ottimi, nessun problema sanitario riscontrato e comunicazione chiara.",Reception,pos
+86,Segnalazione grave igiene - F&B,"Al ristorante situazione grave: scarafaggi in cucina, personale trascurato e igiene insalubre.",F&B,neg
+87,Situazione inaccettabile - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+88,Esperienza sanitaria critica - Housekeeping,In camera c'erano acari e in bagno ho trovato muffa vicino alla doccia. La notte siamo stati morsi e la pulizia è stata pessima.,Housekeeping,neg
+89,Esperienza sanitaria critica - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+90,Reclamo urgente - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+91,Controllo igiene ok - Housekeeping,"Camera e bagno molto puliti, nessuna muffa e nessun odore forte. Materasso comodo e notte tranquilla.",Housekeeping,pos
+92,Reclamo urgente - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+93,Situazione inaccettabile - Housekeeping,"Asciugamani sporchi, bagno con muffa e odore nauseante. Igiene pessima per tutta la notte.",Housekeeping,neg
+94,Reclamo urgente - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+95,Nessuna criticità sanitaria - Housekeeping,"Camera e bagno molto puliti, nessuna muffa e nessun odore forte. Materasso comodo e notte tranquilla.",Housekeeping,pos
+96,Esperienza sanitaria critica - F&B,"Al ristorante situazione grave: scarafaggi in cucina, personale trascurato e igiene insalubre.",F&B,neg
+97,Reclamo urgente - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+98,Segnalazione grave igiene - Housekeeping,In camera c'erano acari e in bagno ho trovato muffa vicino alla doccia. La notte siamo stati morsi e la pulizia è stata pessima.,Housekeeping,neg
+99,Verifica condizioni positive - Housekeeping,"Controllo accurato: nessun acaro visibile, nessuna cimice e ottima igiene in stanza.",Housekeeping,pos
+100,Situazione inaccettabile - Reception,"Reception cortese ma inefficace: nonostante le foto di cimici da letto, nessun intervento e nessun cambio camera.",Reception,neg
+101,Verifica condizioni positive - F&B,"Ristorante curato: nessuno scarafaggio, nessun problema igienico e personale professionale.",F&B,pos
+102,Esperienza sanitaria critica - Housekeeping,"Asciugamani sporchi, bagno con muffa e odore nauseante. Igiene pessima per tutta la notte.",Housekeeping,neg
+103,Reclamo urgente - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+104,Reclamo urgente - F&B,In cucina ho visto scarafaggi in giro e il cuoco aveva peli sul camice. Odore nauseante e condizioni igieniche pessime.,F&B,neg
+105,Esperienza sanitaria critica - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+106,Verifica condizioni positive - Reception,"Reception efficiente: segnalazioni gestite subito, nessuna criticità su igiene camera e supporto rapido.",Reception,pos
+107,Segnalazione grave igiene - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+108,Segnalazione grave igiene - Housekeeping,In camera c'erano acari e in bagno ho trovato muffa vicino alla doccia. La notte siamo stati morsi e la pulizia è stata pessima.,Housekeeping,neg
+109,Situazione inaccettabile - F&B,In cucina ho visto scarafaggi in giro e il cuoco aveva peli sul camice. Odore nauseante e condizioni igieniche pessime.,F&B,neg
+110,Reclamo urgente - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+111,Situazione inaccettabile - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+112,Segnalazione grave igiene - Reception,"Reception cortese ma inefficace: nonostante le foto di cimici da letto, nessun intervento e nessun cambio camera.",Reception,neg
+113,Segnalazione grave igiene - F&B,In cucina ho visto scarafaggi in giro e il cuoco aveva peli sul camice. Odore nauseante e condizioni igieniche pessime.,F&B,neg
+114,Verifica condizioni positive - F&B,"Ristorante curato: nessuno scarafaggio, nessun problema igienico e personale professionale.",F&B,pos
+115,Verifica condizioni positive - F&B,"Ristorante curato: nessuno scarafaggio, nessun problema igienico e personale professionale.",F&B,pos
+116,Situazione inaccettabile - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+117,Verifica condizioni positive - Reception,"Check in e assistenza ottimi, nessun problema sanitario riscontrato e comunicazione chiara.",Reception,pos
+118,Controllo igiene ok - Reception,"Check in e assistenza ottimi, nessun problema sanitario riscontrato e comunicazione chiara.",Reception,pos
+119,Segnalazione grave igiene - F&B,In cucina ho visto scarafaggi in giro e il cuoco aveva peli sul camice. Odore nauseante e condizioni igieniche pessime.,F&B,neg
+120,Reclamo urgente - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+121,Reclamo urgente - F&B,In cucina ho visto scarafaggi in giro e il cuoco aveva peli sul camice. Odore nauseante e condizioni igieniche pessime.,F&B,neg
+122,Reclamo urgente - Housekeeping,In camera c'erano acari e in bagno ho trovato muffa vicino alla doccia. La notte siamo stati morsi e la pulizia è stata pessima.,Housekeeping,neg
+123,Situazione inaccettabile - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+124,Esperienza sanitaria critica - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+125,Nessuna criticità sanitaria - Housekeeping,"Controllo accurato: nessun acaro visibile, nessuna cimice e ottima igiene in stanza.",Housekeeping,pos
+126,Segnalazione grave igiene - Housekeeping,In camera c'erano acari e in bagno ho trovato muffa vicino alla doccia. La notte siamo stati morsi e la pulizia è stata pessima.,Housekeeping,neg
+127,Situazione inaccettabile - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+128,Situazione inaccettabile - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+129,Segnalazione grave igiene - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+130,Nessuna criticità sanitaria - F&B,"Colazione ben organizzata, nessun odore forte e cucina visibilmente pulita.",F&B,pos
+131,Situazione inaccettabile - Housekeeping,In camera c'erano acari e in bagno ho trovato muffa vicino alla doccia. La notte siamo stati morsi e la pulizia è stata pessima.,Housekeeping,neg
+132,Reclamo urgente - F&B,In cucina ho visto scarafaggi in giro e il cuoco aveva peli sul camice. Odore nauseante e condizioni igieniche pessime.,F&B,neg
+133,Situazione inaccettabile - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+134,Segnalazione grave igiene - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+135,Nessuna criticità sanitaria - Housekeeping,"Camera e bagno molto puliti, nessuna muffa e nessun odore forte. Materasso comodo e notte tranquilla.",Housekeeping,pos
+136,Situazione inaccettabile - F&B,"Al ristorante situazione grave: scarafaggi in cucina, personale trascurato e igiene insalubre.",F&B,neg
+137,Segnalazione grave igiene - F&B,"Al ristorante situazione grave: scarafaggi in cucina, personale trascurato e igiene insalubre.",F&B,neg
+138,Segnalazione grave igiene - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+139,Controllo igiene ok - F&B,"Colazione ben organizzata, nessun odore forte e cucina visibilmente pulita.",F&B,pos
+140,Reclamo urgente - Housekeeping,In camera c'erano acari e in bagno ho trovato muffa vicino alla doccia. La notte siamo stati morsi e la pulizia è stata pessima.,Housekeeping,neg
+141,Situazione inaccettabile - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+142,Segnalazione grave igiene - Housekeeping,In camera c'erano acari e in bagno ho trovato muffa vicino alla doccia. La notte siamo stati morsi e la pulizia è stata pessima.,Housekeeping,neg
+143,Esperienza sanitaria critica - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+144,Segnalazione grave igiene - Reception,"Reception cortese ma inefficace: nonostante le foto di cimici da letto, nessun intervento e nessun cambio camera.",Reception,neg
+145,Segnalazione grave igiene - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+146,Reclamo urgente - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+147,Situazione inaccettabile - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+148,Segnalazione grave igiene - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+149,Esperienza sanitaria critica - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+150,Segnalazione grave igiene - Reception,"Reception cortese ma inefficace: nonostante le foto di cimici da letto, nessun intervento e nessun cambio camera.",Reception,neg
+151,Reclamo urgente - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+152,Controllo igiene ok - Housekeeping,"Camera e bagno molto puliti, nessuna muffa e nessun odore forte. Materasso comodo e notte tranquilla.",Housekeeping,pos
+153,Situazione inaccettabile - Reception,"Alla reception abbiamo segnalato odore forte e muffa in stanza, ma non è stato fatto nulla. Gestione problema insufficiente.",Reception,neg
+154,Situazione inaccettabile - Reception,"Reception cortese ma inefficace: nonostante le foto di cimici da letto, nessun intervento e nessun cambio camera.",Reception,neg
+155,Reclamo urgente - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+156,Segnalazione grave igiene - Housekeeping,In camera c'erano acari e in bagno ho trovato muffa vicino alla doccia. La notte siamo stati morsi e la pulizia è stata pessima.,Housekeeping,neg
+157,Reclamo urgente - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+158,Segnalazione grave igiene - Reception,Check in rapido ma alla reception non hanno gestito una segnalazione di scarafaggi in camera. Attesa lunga e assistenza deludente.,Reception,neg
+159,Situazione inaccettabile - Housekeeping,In camera c'erano acari e in bagno ho trovato muffa vicino alla doccia. La notte siamo stati morsi e la pulizia è stata pessima.,Housekeeping,neg
+160,Reclamo urgente - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+161,Reclamo urgente - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+162,Controllo igiene ok - F&B,"Colazione ben organizzata, nessun odore forte e cucina visibilmente pulita.",F&B,pos
+163,Segnalazione grave igiene - Housekeeping,"Asciugamani sporchi, bagno con muffa e odore nauseante. Igiene pessima per tutta la notte.",Housekeeping,neg
+164,Verifica condizioni positive - Reception,"Check in e assistenza ottimi, nessun problema sanitario riscontrato e comunicazione chiara.",Reception,pos
+165,Reclamo urgente - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+166,Segnalazione grave igiene - F&B,"Al ristorante situazione grave: scarafaggi in cucina, personale trascurato e igiene insalubre.",F&B,neg
+167,Segnalazione grave igiene - Housekeeping,In camera c'erano acari e in bagno ho trovato muffa vicino alla doccia. La notte siamo stati morsi e la pulizia è stata pessima.,Housekeeping,neg
+168,Situazione inaccettabile - Reception,"Reception cortese ma inefficace: nonostante le foto di cimici da letto, nessun intervento e nessun cambio camera.",Reception,neg
+169,Esperienza sanitaria critica - Housekeeping,"Asciugamani sporchi, bagno con muffa e odore nauseante. Igiene pessima per tutta la notte.",Housekeeping,neg
+170,Segnalazione grave igiene - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+171,Esperienza sanitaria critica - Reception,"Reception cortese ma inefficace: nonostante le foto di cimici da letto, nessun intervento e nessun cambio camera.",Reception,neg
+172,Reclamo urgente - Housekeeping,In camera c'erano acari e in bagno ho trovato muffa vicino alla doccia. La notte siamo stati morsi e la pulizia è stata pessima.,Housekeeping,neg
+173,Segnalazione grave igiene - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+174,Esperienza sanitaria critica - Housekeeping,"Materasso pieno di acari, odore forte in stanza e cimici da letto. Situazione insalubre e inaccettabile.",Housekeeping,neg
+175,Situazione inaccettabile - F&B,"Al ristorante situazione grave: scarafaggi in cucina, personale trascurato e igiene insalubre.",F&B,neg
+176,Segnalazione grave igiene - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+177,Segnalazione grave igiene - F&B,In cucina ho visto scarafaggi in giro e il cuoco aveva peli sul camice. Odore nauseante e condizioni igieniche pessime.,F&B,neg
+178,Segnalazione grave igiene - F&B,"Durante la colazione c'era puzza forte, piatti non puliti e blatte vicino al buffet. Esperienza disgustosa.",F&B,neg
+179,Esperienza sanitaria critica - F&B,In cucina ho visto scarafaggi in giro e il cuoco aveva peli sul camice. Odore nauseante e condizioni igieniche pessime.,F&B,neg
+180,Esperienza sanitaria critica - F&B,"Al ristorante situazione grave: scarafaggi in cucina, personale trascurato e igiene insalubre.",F&B,neg

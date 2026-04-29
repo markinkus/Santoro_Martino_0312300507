@@ -1,0 +1,64 @@
+{
+  "test_split": {
+    "department": {
+      "ece": 0.06616986799300387,
+      "brier": 0.10756922492653796
+    },
+    "sentiment": {
+      "ece": 0.04651288744901897,
+      "brier": 0.05120933788968419
+    }
+  },
+  "benchmarks": {
+    "reviews_ambiguous.csv": {
+      "department": {
+        "ece": 0.13168360056139103,
+        "brier": 0.28937192771082976
+      },
+      "sentiment": {
+        "ece": 0.08272816175226258,
+        "brier": 0.24555549137417165
+      }
+    },
+    "reviews_colloquial.csv": {
+      "department": {
+        "ece": 0.16635075033044402,
+        "brier": 0.08750886217894777
+      },
+      "sentiment": {
+        "ece": 0.12361018223577867,
+        "brier": 0.040003487104966436
+      }
+    },
+    "reviews_in_distribution.csv": {
+      "department": {
+        "ece": 0.17904429959984863,
+        "brier": 0.1656826773707818
+      },
+      "sentiment": {
+        "ece": 0.07715567842251764,
+        "brier": 0.12610810011308818
+      }
+    },
+    "reviews_noisy.csv": {
+      "department": {
+        "ece": 0.12069986400361775,
+        "brier": 0.29780749416226526
+      },
+      "sentiment": {
+        "ece": 0.0658208336531154,
+        "brier": 0.2669656912834379
+      }
+    },
+    "reviews_safety_critical.csv": {
+      "department": {
+        "ece": 0.008389221779110168,
+        "brier": 0.000328746206454507
+      },
+      "sentiment": {
+        "ece": 0.010577694085324454,
+        "brier": 0.0009067052299776747
+      }
+    }
+  }
+}

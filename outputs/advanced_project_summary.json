@@ -1,0 +1,853 @@
+{
+  "official_reference": "hardened",
+  "configurations": {
+    "pure": {
+      "baseline": {
+        "test": {
+          "dep_f1": 0.8855997533148319,
+          "sent_f1": 0.8998159885503987,
+          "dep_acc": 0.8857142857142857,
+          "sent_acc": 0.9
+        },
+        "dataset": {
+          "rows": 350,
+          "test_size": 0.2,
+          "seed": 42,
+          "augmentation": {
+            "enabled": false,
+            "path": null,
+            "rows_added": 0,
+            "repeat": 1
+          }
+        },
+        "test_calibration": {
+          "department": {
+            "ece": 0.12438662921857499,
+            "brier": 0.21778357742703916
+          },
+          "sentiment": {
+            "ece": 0.08686965043194134,
+            "brier": 0.17838394100595242
+          }
+        },
+        "benchmarks": {
+          "reviews_in_distribution.csv": {
+            "dep_f1": 0.9398921366959948,
+            "sent_f1": 0.9199795147557774,
+            "dep_ece": 0.1594078656419455,
+            "sent_ece": 0.054429161444099976,
+            "coverage": 0.868,
+            "needs_review_rate": 0.132
+          },
+          "reviews_ambiguous.csv": {
+            "dep_f1": 0.8416141757514497,
+            "sent_f1": 0.8269151138716355,
+            "dep_ece": 0.08746867585661981,
+            "sent_ece": 0.07449721191555445,
+            "coverage": 0.8227272727272728,
+            "needs_review_rate": 0.17727272727272728
+          },
+          "reviews_noisy.csv": {
+            "dep_f1": 0.84084628642744,
+            "sent_f1": 0.8363636363636363,
+            "dep_ece": 0.1131142910493993,
+            "sent_ece": 0.1184944973861791,
+            "coverage": 0.8454545454545455,
+            "needs_review_rate": 0.15454545454545454
+          },
+          "reviews_safety_critical.csv": {
+            "dep_f1": 0.7789203722443796,
+            "sent_f1": 0.784366576819407,
+            "dep_ece": 0.14461480619321793,
+            "sent_ece": 0.11172031056707052,
+            "coverage": 0.2055555555555556,
+            "needs_review_rate": 0.7944444444444444
+          },
+          "reviews_colloquial.csv": {
+            "dep_f1": 0.98185731993799,
+            "sent_f1": 0.990909090909091,
+            "dep_ece": 0.1411748806239274,
+            "sent_ece": 0.11657636165394189,
+            "coverage": 0.8727272727272728,
+            "needs_review_rate": 0.12727272727272726
+          }
+        }
+      },
+      "advanced_ensemble_aps": {
+        "test": {
+          "dep_f1": 0.87186565447435,
+          "sent_f1": 0.8998159885503987,
+          "dep_acc": 0.8714285714285714,
+          "sent_acc": 0.9
+        },
+        "dataset": {
+          "rows": 350,
+          "test_size": 0.2,
+          "meta_size_on_train_pool": 0.25,
+          "seed": 42,
+          "augmentation": {
+            "enabled": false,
+            "path": null,
+            "rows_added": 0,
+            "repeat": 1
+          }
+        },
+        "test_calibration": {
+          "department": {
+            "ece": 0.09575239283586938,
+            "brier": 0.21263100557920625
+          },
+          "sentiment": {
+            "ece": 0.01191126568955884,
+            "brier": 0.15969430225601222
+          }
+        },
+        "conformal_test": {
+          "coverage": 0.9857142857142858,
+          "avg_set_size": 2.4
+        },
+        "calibration_probe": {
+          "department": {
+            "chosen": "isotonic",
+            "candidates": {
+              "sigmoid": {
+                "accuracy": 0.7428571428571429,
+                "ece": 0.10451746149774276,
+                "brier": 0.337813579968206
+              },
+              "isotonic": {
+                "accuracy": 0.7142857142857143,
+                "ece": 0.08259394258694054,
+                "brier": 0.34412565555021307
+              }
+            }
+          },
+          "sentiment": {
+            "chosen": "isotonic",
+            "candidates": {
+              "sigmoid": {
+                "accuracy": 0.9428571428571428,
+                "ece": 0.07609716401237847,
+                "brier": 0.13299750312590827
+              },
+              "isotonic": {
+                "accuracy": 0.9428571428571428,
+                "ece": 0.057401935932229295,
+                "brier": 0.12195947500539189
+              }
+            }
+          }
+        },
+        "benchmarks": {
+          "reviews_in_distribution.csv": {
+            "dep_f1": 0.9160713114677309,
+            "sent_f1": 0.9199795147557774,
+            "dep_ece": 0.09731923192865577,
+            "sent_ece": 0.04603738826668533,
+            "coverage": 0.9319999999999999,
+            "needs_review_rate": 0.068,
+            "conformal_cov": 0.988,
+            "conformal_set_size": 2.4
+          },
+          "reviews_ambiguous.csv": {
+            "dep_f1": 0.8185685685685686,
+            "sent_f1": 0.8269151138716355,
+            "dep_ece": 0.055300250504702685,
+            "sent_ece": 0.04148367307090509,
+            "coverage": 0.9590909090909091,
+            "needs_review_rate": 0.04090909090909091,
+            "conformal_cov": 0.9772727272727273,
+            "conformal_set_size": 2.418181818181818
+          },
+          "reviews_noisy.csv": {
+            "dep_f1": 0.8454632994750412,
+            "sent_f1": 0.8363636363636363,
+            "dep_ece": 0.07083839419006141,
+            "sent_ece": 0.08275117894156633,
+            "coverage": 0.9227272727272727,
+            "needs_review_rate": 0.07727272727272727,
+            "conformal_cov": 0.9727272727272728,
+            "conformal_set_size": 2.359090909090909
+          },
+          "reviews_safety_critical.csv": {
+            "dep_f1": 0.7281515215567212,
+            "sent_f1": 0.784366576819407,
+            "dep_ece": 0.13650169648896915,
+            "sent_ece": 0.22336956674991712,
+            "coverage": 0.7666666666666666,
+            "needs_review_rate": 0.23333333333333334,
+            "conformal_cov": 0.9555555555555556,
+            "conformal_set_size": 2.316666666666667
+          },
+          "reviews_colloquial.csv": {
+            "dep_f1": 0.9682749873160832,
+            "sent_f1": 0.990909090909091,
+            "dep_ece": 0.10665089282342079,
+            "sent_ece": 0.10053822380881663,
+            "coverage": 0.9454545454545454,
+            "needs_review_rate": 0.05454545454545454,
+            "conformal_cov": 0.9954545454545455,
+            "conformal_set_size": 2.2045454545454546
+          }
+        },
+        "delta_vs_baseline": {
+          "test_dep_ece": -0.02863423638270561,
+          "test_sent_ece": -0.07495838474238249,
+          "bench_dep_f1": {
+            "reviews_in_distribution.csv": -0.023820825228263898,
+            "reviews_ambiguous.csv": -0.023045607182881067,
+            "reviews_noisy.csv": 0.004617013047601204,
+            "reviews_safety_critical.csv": -0.05076885068765835,
+            "reviews_colloquial.csv": -0.013582332621906779
+          },
+          "bench_sent_f1": {
+            "reviews_in_distribution.csv": 0.0,
+            "reviews_ambiguous.csv": 0.0,
+            "reviews_noisy.csv": 0.0,
+            "reviews_safety_critical.csv": 0.0,
+            "reviews_colloquial.csv": 0.0
+          }
+        }
+      }
+    },
+    "hardened": {
+      "baseline": {
+        "test": {
+          "dep_f1": 0.9298522210893344,
+          "sent_f1": 0.907655926692285,
+          "dep_acc": 0.9295774647887324,
+          "sent_acc": 0.9225352112676056
+        },
+        "dataset": {
+          "rows": 710,
+          "test_size": 0.2,
+          "seed": 42,
+          "augmentation": {
+            "enabled": true,
+            "path": "data/benchmarks/reviews_safety_critical.csv",
+            "rows_added": 360,
+            "repeat": 2
+          }
+        },
+        "test_calibration": {
+          "department": {
+            "ece": 0.06616986799300387,
+            "brier": 0.10756922492653796
+          },
+          "sentiment": {
+            "ece": 0.04651288744901897,
+            "brier": 0.05120933788968419
+          }
+        },
+        "benchmarks": {
+          "reviews_in_distribution.csv": {
+            "dep_f1": 0.932013771100007,
+            "sent_f1": 0.9199795147557774,
+            "dep_ece": 0.17904429959984863,
+            "sent_ece": 0.07715567842251764,
+            "coverage": 0.752,
+            "needs_review_rate": 0.248
+          },
+          "reviews_ambiguous.csv": {
+            "dep_f1": 0.8229060318369035,
+            "sent_f1": 0.8269151138716355,
+            "dep_ece": 0.13168360056139103,
+            "sent_ece": 0.08272816175226258,
+            "coverage": 0.6363636363636364,
+            "needs_review_rate": 0.36363636363636365
+          },
+          "reviews_noisy.csv": {
+            "dep_f1": 0.8444393556772619,
+            "sent_f1": 0.8318147069154321,
+            "dep_ece": 0.12069986400361775,
+            "sent_ece": 0.0658208336531154,
+            "coverage": 0.6681818181818182,
+            "needs_review_rate": 0.33181818181818185
+          },
+          "reviews_safety_critical.csv": {
+            "dep_f1": 1.0,
+            "sent_f1": 0.834920634920635,
+            "dep_ece": 0.008389221779110168,
+            "sent_ece": 0.010577694085324454,
+            "coverage": 0.9277777777777778,
+            "needs_review_rate": 0.07222222222222222
+          },
+          "reviews_colloquial.csv": {
+            "dep_f1": 0.9774032553675119,
+            "sent_f1": 0.9954544515382548,
+            "dep_ece": 0.16635075033044402,
+            "sent_ece": 0.12361018223577867,
+            "coverage": 0.8136363636363636,
+            "needs_review_rate": 0.18636363636363637
+          }
+        }
+      },
+      "advanced_ensemble_aps": {
+        "test": {
+          "dep_f1": 0.9441226728597862,
+          "sent_f1": 0.907655926692285,
+          "dep_acc": 0.9436619718309859,
+          "sent_acc": 0.9225352112676056
+        },
+        "dataset": {
+          "rows": 710,
+          "test_size": 0.2,
+          "meta_size_on_train_pool": 0.25,
+          "seed": 42,
+          "augmentation": {
+            "enabled": true,
+            "path": "data/benchmarks/reviews_safety_critical.csv",
+            "rows_added": 360,
+            "repeat": 2
+          }
+        },
+        "test_calibration": {
+          "department": {
+            "ece": 0.04049021641380802,
+            "brier": 0.09615489743426955
+          },
+          "sentiment": {
+            "ece": 0.042281889207834454,
+            "brier": 0.050286554237689705
+          }
+        },
+        "conformal_test": {
+          "coverage": 0.9929577464788732,
+          "avg_set_size": 2.3661971830985915
+        },
+        "calibration_probe": {
+          "department": {
+            "chosen": "isotonic",
+            "candidates": {
+              "sigmoid": {
+                "accuracy": 0.9366197183098591,
+                "ece": 0.1027176524893293,
+                "brier": 0.11552628366249716
+              },
+              "isotonic": {
+                "accuracy": 0.9436619718309859,
+                "ece": 0.058750797672912844,
+                "brier": 0.09673340544951156
+              }
+            }
+          },
+          "sentiment": {
+            "chosen": "isotonic",
+            "candidates": {
+              "sigmoid": {
+                "accuracy": 0.9647887323943662,
+                "ece": 0.07249025243051527,
+                "brier": 0.08159135155170781
+              },
+              "isotonic": {
+                "accuracy": 0.9647887323943662,
+                "ece": 0.046493539661264696,
+                "brier": 0.08273942353509876
+              }
+            }
+          }
+        },
+        "benchmarks": {
+          "reviews_in_distribution.csv": {
+            "dep_f1": 0.923934231714552,
+            "sent_f1": 0.9159879022579251,
+            "dep_ece": 0.06221486175606463,
+            "sent_ece": 0.03745070389065844,
+            "coverage": 0.696,
+            "needs_review_rate": 0.304,
+            "conformal_cov": 1.0,
+            "conformal_set_size": 2.748
+          },
+          "reviews_ambiguous.csv": {
+            "dep_f1": 0.8268734245290473,
+            "sent_f1": 0.822430099960678,
+            "dep_ece": 0.0670062488723778,
+            "sent_ece": 0.06376601902134363,
+            "coverage": 0.6409090909090909,
+            "needs_review_rate": 0.35909090909090907,
+            "conformal_cov": 0.9954545454545455,
+            "conformal_set_size": 2.790909090909091
+          },
+          "reviews_noisy.csv": {
+            "dep_f1": 0.8315221815221815,
+            "sent_f1": 0.8227236099919419,
+            "dep_ece": 0.07201467032702888,
+            "sent_ece": 0.07677160879541477,
+            "coverage": 0.6636363636363636,
+            "needs_review_rate": 0.33636363636363636,
+            "conformal_cov": 0.9954545454545455,
+            "conformal_set_size": 2.7545454545454544
+          },
+          "reviews_safety_critical.csv": {
+            "dep_f1": 1.0,
+            "sent_f1": 0.834920634920635,
+            "dep_ece": 0.03535947512811943,
+            "sent_ece": 0.04086165276338912,
+            "coverage": 0.9166666666666666,
+            "needs_review_rate": 0.08333333333333333,
+            "conformal_cov": 1.0,
+            "conformal_set_size": 2.0388888888888888
+          },
+          "reviews_colloquial.csv": {
+            "dep_f1": 0.9728862238559935,
+            "sent_f1": 0.9954544515382548,
+            "dep_ece": 0.06906926097946563,
+            "sent_ece": 0.08465957149235398,
+            "coverage": 0.8409090909090909,
+            "needs_review_rate": 0.1590909090909091,
+            "conformal_cov": 1.0,
+            "conformal_set_size": 2.590909090909091
+          }
+        },
+        "delta_vs_baseline": {
+          "test_dep_ece": -0.02567965157919585,
+          "test_sent_ece": -0.0042309982411845165,
+          "bench_dep_f1": {
+            "reviews_in_distribution.csv": -0.008079539385455026,
+            "reviews_ambiguous.csv": 0.003967392692143856,
+            "reviews_noisy.csv": -0.012917174155080424,
+            "reviews_safety_critical.csv": 0.0,
+            "reviews_colloquial.csv": -0.004517031511518388
+          },
+          "bench_sent_f1": {
+            "reviews_in_distribution.csv": -0.003991612497852293,
+            "reviews_ambiguous.csv": -0.004485013910957569,
+            "reviews_noisy.csv": -0.009091096923490194,
+            "reviews_safety_critical.csv": 0.0,
+            "reviews_colloquial.csv": 0.0
+          }
+        }
+      }
+    }
+  },
+  "baseline": {
+    "test": {
+      "dep_f1": 0.9298522210893344,
+      "sent_f1": 0.907655926692285,
+      "dep_acc": 0.9295774647887324,
+      "sent_acc": 0.9225352112676056
+    },
+    "dataset": {
+      "rows": 710,
+      "test_size": 0.2,
+      "seed": 42,
+      "augmentation": {
+        "enabled": true,
+        "path": "data/benchmarks/reviews_safety_critical.csv",
+        "rows_added": 360,
+        "repeat": 2
+      }
+    },
+    "test_calibration": {
+      "department": {
+        "ece": 0.06616986799300387,
+        "brier": 0.10756922492653796
+      },
+      "sentiment": {
+        "ece": 0.04651288744901897,
+        "brier": 0.05120933788968419
+      }
+    },
+    "benchmarks": {
+      "reviews_in_distribution.csv": {
+        "dep_f1": 0.932013771100007,
+        "sent_f1": 0.9199795147557774,
+        "dep_ece": 0.17904429959984863,
+        "sent_ece": 0.07715567842251764,
+        "coverage": 0.752,
+        "needs_review_rate": 0.248
+      },
+      "reviews_ambiguous.csv": {
+        "dep_f1": 0.8229060318369035,
+        "sent_f1": 0.8269151138716355,
+        "dep_ece": 0.13168360056139103,
+        "sent_ece": 0.08272816175226258,
+        "coverage": 0.6363636363636364,
+        "needs_review_rate": 0.36363636363636365
+      },
+      "reviews_noisy.csv": {
+        "dep_f1": 0.8444393556772619,
+        "sent_f1": 0.8318147069154321,
+        "dep_ece": 0.12069986400361775,
+        "sent_ece": 0.0658208336531154,
+        "coverage": 0.6681818181818182,
+        "needs_review_rate": 0.33181818181818185
+      },
+      "reviews_safety_critical.csv": {
+        "dep_f1": 1.0,
+        "sent_f1": 0.834920634920635,
+        "dep_ece": 0.008389221779110168,
+        "sent_ece": 0.010577694085324454,
+        "coverage": 0.9277777777777778,
+        "needs_review_rate": 0.07222222222222222
+      },
+      "reviews_colloquial.csv": {
+        "dep_f1": 0.9774032553675119,
+        "sent_f1": 0.9954544515382548,
+        "dep_ece": 0.16635075033044402,
+        "sent_ece": 0.12361018223577867,
+        "coverage": 0.8136363636363636,
+        "needs_review_rate": 0.18636363636363637
+      }
+    }
+  },
+  "advanced_ensemble_aps": {
+    "test": {
+      "dep_f1": 0.9441226728597862,
+      "sent_f1": 0.907655926692285,
+      "dep_acc": 0.9436619718309859,
+      "sent_acc": 0.9225352112676056
+    },
+    "dataset": {
+      "rows": 710,
+      "test_size": 0.2,
+      "meta_size_on_train_pool": 0.25,
+      "seed": 42,
+      "augmentation": {
+        "enabled": true,
+        "path": "data/benchmarks/reviews_safety_critical.csv",
+        "rows_added": 360,
+        "repeat": 2
+      }
+    },
+    "test_calibration": {
+      "department": {
+        "ece": 0.04049021641380802,
+        "brier": 0.09615489743426955
+      },
+      "sentiment": {
+        "ece": 0.042281889207834454,
+        "brier": 0.050286554237689705
+      }
+    },
+    "conformal_test": {
+      "coverage": 0.9929577464788732,
+      "avg_set_size": 2.3661971830985915
+    },
+    "calibration_probe": {
+      "department": {
+        "chosen": "isotonic",
+        "candidates": {
+          "sigmoid": {
+            "accuracy": 0.9366197183098591,
+            "ece": 0.1027176524893293,
+            "brier": 0.11552628366249716
+          },
+          "isotonic": {
+            "accuracy": 0.9436619718309859,
+            "ece": 0.058750797672912844,
+            "brier": 0.09673340544951156
+          }
+        }
+      },
+      "sentiment": {
+        "chosen": "isotonic",
+        "candidates": {
+          "sigmoid": {
+            "accuracy": 0.9647887323943662,
+            "ece": 0.07249025243051527,
+            "brier": 0.08159135155170781
+          },
+          "isotonic": {
+            "accuracy": 0.9647887323943662,
+            "ece": 0.046493539661264696,
+            "brier": 0.08273942353509876
+          }
+        }
+      }
+    },
+    "benchmarks": {
+      "reviews_in_distribution.csv": {
+        "dep_f1": 0.923934231714552,
+        "sent_f1": 0.9159879022579251,
+        "dep_ece": 0.06221486175606463,
+        "sent_ece": 0.03745070389065844,
+        "coverage": 0.696,
+        "needs_review_rate": 0.304,
+        "conformal_cov": 1.0,
+        "conformal_set_size": 2.748
+      },
+      "reviews_ambiguous.csv": {
+        "dep_f1": 0.8268734245290473,
+        "sent_f1": 0.822430099960678,
+        "dep_ece": 0.0670062488723778,
+        "sent_ece": 0.06376601902134363,
+        "coverage": 0.6409090909090909,
+        "needs_review_rate": 0.35909090909090907,
+        "conformal_cov": 0.9954545454545455,
+        "conformal_set_size": 2.790909090909091
+      },
+      "reviews_noisy.csv": {
+        "dep_f1": 0.8315221815221815,
+        "sent_f1": 0.8227236099919419,
+        "dep_ece": 0.07201467032702888,
+        "sent_ece": 0.07677160879541477,
+        "coverage": 0.6636363636363636,
+        "needs_review_rate": 0.33636363636363636,
+        "conformal_cov": 0.9954545454545455,
+        "conformal_set_size": 2.7545454545454544
+      },
+      "reviews_safety_critical.csv": {
+        "dep_f1": 1.0,
+        "sent_f1": 0.834920634920635,
+        "dep_ece": 0.03535947512811943,
+        "sent_ece": 0.04086165276338912,
+        "coverage": 0.9166666666666666,
+        "needs_review_rate": 0.08333333333333333,
+        "conformal_cov": 1.0,
+        "conformal_set_size": 2.0388888888888888
+      },
+      "reviews_colloquial.csv": {
+        "dep_f1": 0.9728862238559935,
+        "sent_f1": 0.9954544515382548,
+        "dep_ece": 0.06906926097946563,
+        "sent_ece": 0.08465957149235398,
+        "coverage": 0.8409090909090909,
+        "needs_review_rate": 0.1590909090909091,
+        "conformal_cov": 1.0,
+        "conformal_set_size": 2.590909090909091
+      }
+    },
+    "delta_vs_baseline": {
+      "test_dep_ece": -0.02567965157919585,
+      "test_sent_ece": -0.0042309982411845165,
+      "bench_dep_f1": {
+        "reviews_in_distribution.csv": -0.008079539385455026,
+        "reviews_ambiguous.csv": 0.003967392692143856,
+        "reviews_noisy.csv": -0.012917174155080424,
+        "reviews_safety_critical.csv": 0.0,
+        "reviews_colloquial.csv": -0.004517031511518388
+      },
+      "bench_sent_f1": {
+        "reviews_in_distribution.csv": -0.003991612497852293,
+        "reviews_ambiguous.csv": -0.004485013910957569,
+        "reviews_noisy.csv": -0.009091096923490194,
+        "reviews_safety_critical.csv": 0.0,
+        "reviews_colloquial.csv": 0.0
+      }
+    }
+  },
+  "transformer_comparison": {
+    "timestamp": "20260217_113943",
+    "transformer_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "test_split": {
+      "baseline": {
+        "department": {
+          "accuracy": 0.9714285714285714,
+          "f1_macro": 0.9716115051221434
+        },
+        "sentiment": {
+          "accuracy": 0.9428571428571428,
+          "f1_macro": 0.9428104575163399
+        }
+      },
+      "transformer": {
+        "department": {
+          "accuracy": 0.9285714285714286,
+          "f1_macro": 0.928841691715446
+        },
+        "sentiment": {
+          "accuracy": 0.9428571428571428,
+          "f1_macro": 0.9428104575163399
+        }
+      },
+      "delta_f1_macro": {
+        "department": -0.0427698134066975,
+        "sentiment": 0.0
+      }
+    },
+    "benchmarks": {
+      "reviews_ambiguous.csv": {
+        "baseline": {
+          "department": {
+            "accuracy": 0.8590909090909091,
+            "f1_macro": 0.8588353152650484
+          },
+          "sentiment": {
+            "accuracy": 0.8818181818181818,
+            "f1_macro": 0.8818084139185056
+          }
+        },
+        "transformer": {
+          "department": {
+            "accuracy": 0.8227272727272728,
+            "f1_macro": 0.8226751447399842
+          },
+          "sentiment": {
+            "accuracy": 0.8636363636363636,
+            "f1_macro": 0.8636363636363636
+          }
+        },
+        "delta_f1_macro": {
+          "department": -0.03616017052506426,
+          "sentiment": -0.01817205028214197
+        }
+      },
+      "reviews_in_distribution.csv": {
+        "baseline": {
+          "department": {
+            "accuracy": 0.956,
+            "f1_macro": 0.9560397814642357
+          },
+          "sentiment": {
+            "accuracy": 0.948,
+            "f1_macro": 0.9479991679866878
+          }
+        },
+        "transformer": {
+          "department": {
+            "accuracy": 0.944,
+            "f1_macro": 0.943787919078102
+          },
+          "sentiment": {
+            "accuracy": 0.94,
+            "f1_macro": 0.9399990399846399
+          }
+        },
+        "delta_f1_macro": {
+          "department": -0.012251862386133738,
+          "sentiment": -0.008000128002047968
+        }
+      },
+      "reviews_noisy.csv": {
+        "baseline": {
+          "department": {
+            "accuracy": 0.8772727272727273,
+            "f1_macro": 0.8772714565278167
+          },
+          "sentiment": {
+            "accuracy": 0.8318181818181818,
+            "f1_macro": 0.8317312661498708
+          }
+        },
+        "transformer": {
+          "department": {
+            "accuracy": 0.8318181818181818,
+            "f1_macro": 0.8316869609335362
+          },
+          "sentiment": {
+            "accuracy": 0.8181818181818182,
+            "f1_macro": 0.8179410791128765
+          }
+        },
+        "delta_f1_macro": {
+          "department": -0.04558449559428046,
+          "sentiment": -0.013790187036994306
+        }
+      }
+    }
+  },
+  "active_learning": {
+    "oracle_v1": {
+      "test": {
+        "dep_f1": 0.9669117647058824,
+        "sent_f1": 0.8974709501025291,
+        "dep_acc": 0.9666666666666667,
+        "sent_acc": 0.9133333333333333
+      },
+      "benchmarks": {
+        "reviews_in_distribution.csv": {
+          "dep_f1": 0.9032250104868359,
+          "sent_f1": 0.8837749883774988
+        },
+        "reviews_ambiguous.csv": {
+          "dep_f1": 0.743421642460104,
+          "sent_f1": 0.761248852157943
+        },
+        "reviews_noisy.csv": {
+          "dep_f1": 0.8180984986677533,
+          "sent_f1": 0.8134474985005481
+        },
+        "reviews_safety_critical.csv": {
+          "dep_f1": 1.0,
+          "sent_f1": 0.834920634920635
+        },
+        "reviews_colloquial.csv": {
+          "dep_f1": 0.9357419458964712,
+          "sent_f1": 0.8517894736842105
+        }
+      },
+      "delta_dep_f1_vs_baseline": {
+        "reviews_in_distribution.csv": -0.02878876061317115,
+        "reviews_ambiguous.csv": -0.07948438937679947,
+        "reviews_noisy.csv": -0.02634085700950861,
+        "reviews_safety_critical.csv": 0.0,
+        "reviews_colloquial.csv": -0.04166130947104074
+      }
+    },
+    "hybrid_v2_no_replay": {
+      "test": {
+        "dep_f1": 0.9531891964706675,
+        "sent_f1": 0.8874356775300172,
+        "dep_acc": 0.9533333333333334,
+        "sent_acc": 0.9066666666666666
+      },
+      "benchmarks": {
+        "reviews_in_distribution.csv": {
+          "dep_f1": 0.903488203002872,
+          "sent_f1": 0.8877413560844185
+        },
+        "reviews_ambiguous.csv": {
+          "dep_f1": 0.7592765698028856,
+          "sent_f1": 0.7515891602542657
+        },
+        "reviews_noisy.csv": {
+          "dep_f1": 0.8091447611995557,
+          "sent_f1": 0.8225476205249116
+        },
+        "reviews_safety_critical.csv": {
+          "dep_f1": 1.0,
+          "sent_f1": 0.834920634920635
+        },
+        "reviews_colloquial.csv": {
+          "dep_f1": 0.9035629614576983,
+          "sent_f1": 0.8517894736842105
+        }
+      },
+      "delta_dep_f1_vs_baseline": {
+        "reviews_in_distribution.csv": -0.028525568097135023,
+        "reviews_ambiguous.csv": -0.06362946203401787,
+        "reviews_noisy.csv": -0.03529459447770622,
+        "reviews_safety_critical.csv": 0.0,
+        "reviews_colloquial.csv": -0.07384029390981361
+      }
+    },
+    "hybrid_v2_replay": {
+      "test": {
+        "dep_f1": 0.9885053199895779,
+        "sent_f1": 0.9425342189277458,
+        "dep_acc": 0.9885057471264368,
+        "sent_acc": 0.9482758620689655
+      },
+      "benchmarks": {
+        "reviews_in_distribution.csv": {
+          "dep_f1": 0.8746604013892573,
+          "sent_f1": 0.8877413560844185
+        },
+        "reviews_ambiguous.csv": {
+          "dep_f1": 0.7713895255071725,
+          "sent_f1": 0.7515891602542657
+        },
+        "reviews_noisy.csv": {
+          "dep_f1": 0.8090225070655319,
+          "sent_f1": 0.8225476205249116
+        },
+        "reviews_safety_critical.csv": {
+          "dep_f1": 1.0,
+          "sent_f1": 0.834920634920635
+        },
+        "reviews_colloquial.csv": {
+          "dep_f1": 0.920896202514427,
+          "sent_f1": 0.8274509803921568
+        }
+      },
+      "delta_dep_f1_vs_baseline": {
+        "reviews_in_distribution.csv": -0.05735336971074978,
+        "reviews_ambiguous.csv": -0.05151650632973093,
+        "reviews_noisy.csv": -0.03541684861173,
+        "reviews_safety_critical.csv": 0.0,
+        "reviews_colloquial.csv": -0.05650705285308488
+      }
+    }
+  }
+}

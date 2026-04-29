@@ -1,0 +1,941 @@
+{
+  "timestamp": "20260426_125154",
+  "mode": "advanced_lightweight_ensemble",
+  "dataset": {
+    "rows": 350,
+    "test_size": 0.2,
+    "meta_size_on_train_pool": 0.25,
+    "seed": 42,
+    "augmentation": {
+      "enabled": false,
+      "path": null,
+      "rows_added": 0,
+      "repeat": 1
+    }
+  },
+  "components": {
+    "base_models": [
+      "tfidf_char_logreg_calibrated",
+      "tfidf_word_linearsvc_calibrated",
+      "fasttext_supervised"
+    ],
+    "stacking_meta": "logistic_regression",
+    "sentiment_hardening": {
+      "class_weight": {
+        "neg": 1.35,
+        "pos": 1.0
+      },
+      "contrast_negation_tokens": true
+    },
+    "conformal_prediction": {
+      "enabled": true,
+      "method": "aps",
+      "alpha": 0.1,
+      "threshold": null,
+      "qhat": 0.9522547858465451
+    }
+  },
+  "calibration_probe": {
+    "department": {
+      "chosen": "isotonic",
+      "candidates": {
+        "sigmoid": {
+          "accuracy": 0.7428571428571429,
+          "ece": 0.10451746149774276,
+          "brier": 0.337813579968206
+        },
+        "isotonic": {
+          "accuracy": 0.7142857142857143,
+          "ece": 0.08259394258694054,
+          "brier": 0.34412565555021307
+        }
+      }
+    },
+    "sentiment": {
+      "chosen": "isotonic",
+      "candidates": {
+        "sigmoid": {
+          "accuracy": 0.9428571428571428,
+          "ece": 0.07609716401237847,
+          "brier": 0.13299750312590827
+        },
+        "isotonic": {
+          "accuracy": 0.9428571428571428,
+          "ece": 0.057401935932229295,
+          "brier": 0.12195947500539189
+        }
+      }
+    }
+  },
+  "thresholds": {
+    "department": {
+      "default": 0.5126956788438014,
+      "F&B": 0.45,
+      "Housekeeping": 0.6380870365314041,
+      "Reception": 0.45
+    },
+    "sentiment": {
+      "default": 0.6196049181776742,
+      "neg": 0.6711119468914194,
+      "pos": 0.5680978894639289
+    },
+    "quantile": 0.08,
+    "floor": 0.45,
+    "note": "Solo diagnostica; full-auto non blocca predizioni"
+  },
+  "test_split": {
+    "rows": 70,
+    "department": {
+      "accuracy": 0.8714285714285714,
+      "f1_macro": 0.87186565447435,
+      "recall_by_class": {
+        "F&B": 0.9090909090909091,
+        "Housekeeping": 0.875,
+        "Reception": 0.8333333333333334
+      },
+      "report": {
+        "F&B": {
+          "precision": 0.8695652173913043,
+          "recall": 0.9090909090909091,
+          "f1-score": 0.8888888888888888,
+          "support": 22.0
+        },
+        "Housekeeping": {
+          "precision": 0.84,
+          "recall": 0.875,
+          "f1-score": 0.8571428571428571,
+          "support": 24.0
+        },
+        "Reception": {
+          "precision": 0.9090909090909091,
+          "recall": 0.8333333333333334,
+          "f1-score": 0.8695652173913043,
+          "support": 24.0
+        },
+        "accuracy": 0.8714285714285714,
+        "macro avg": {
+          "precision": 0.8728853754940711,
+          "recall": 0.8724747474747475,
+          "f1-score": 0.87186565447435,
+          "support": 70.0
+        },
+        "weighted avg": {
+          "precision": 0.8729802371541502,
+          "recall": 0.8714285714285714,
+          "f1-score": 0.8713792763482204,
+          "support": 70.0
+        }
+      }
+    },
+    "sentiment": {
+      "accuracy": 0.9,
+      "f1_macro": 0.8998159885503987,
+      "recall_by_class": {
+        "neg": 0.9428571428571428,
+        "pos": 0.8571428571428571
+      },
+      "report": {
+        "neg": {
+          "precision": 0.868421052631579,
+          "recall": 0.9428571428571428,
+          "f1-score": 0.9041095890410958,
+          "support": 35.0
+        },
+        "pos": {
+          "precision": 0.9375,
+          "recall": 0.8571428571428571,
+          "f1-score": 0.8955223880597015,
+          "support": 35.0
+        },
+        "accuracy": 0.9,
+        "macro avg": {
+          "precision": 0.9029605263157895,
+          "recall": 0.8999999999999999,
+          "f1-score": 0.8998159885503987,
+          "support": 70.0
+        },
+        "weighted avg": {
+          "precision": 0.9029605263157894,
+          "recall": 0.9,
+          "f1-score": 0.8998159885503987,
+          "support": 70.0
+        }
+      }
+    },
+    "calibration": {
+      "department": {
+        "ece": 0.09575239283586938,
+        "brier": 0.21263100557920625
+      },
+      "sentiment": {
+        "ece": 0.01191126568955884,
+        "brier": 0.15969430225601222
+      }
+    },
+    "conformal_department": {
+      "coverage": 0.9857142857142858,
+      "avg_set_size": 2.4
+    },
+    "priority_distribution": {
+      "HIGH": 0.4714285714285714,
+      "LOW": 0.45714285714285713,
+      "MEDIUM": 0.07142857142857142
+    },
+    "coverage": 0.9714285714285714,
+    "needs_review_rate": 0.02857142857142857,
+    "sla_summary": [
+      {
+        "department": "Reception",
+        "volume": 22,
+        "window_hours": 8,
+        "capacity_tickets": 112,
+        "backlog_estimated": 0,
+        "sla_target_hours": 2.0,
+        "estimated_avg_response_hours": 2.0,
+        "estimated_sla_hit_rate": 0.929
+      },
+      {
+        "department": "Housekeeping",
+        "volume": 25,
+        "window_hours": 8,
+        "capacity_tickets": 80,
+        "backlog_estimated": 0,
+        "sla_target_hours": 4.0,
+        "estimated_avg_response_hours": 4.0,
+        "estimated_sla_hit_rate": 0.952
+      },
+      {
+        "department": "F&B",
+        "volume": 23,
+        "window_hours": 8,
+        "capacity_tickets": 64,
+        "backlog_estimated": 0,
+        "sla_target_hours": 6.0,
+        "estimated_avg_response_hours": 6.0,
+        "estimated_sla_hit_rate": 0.948
+      }
+    ]
+  },
+  "benchmarks": {
+    "reviews_ambiguous.csv": {
+      "rows": 220,
+      "department": {
+        "accuracy": 0.8181818181818182,
+        "f1_macro": 0.8185685685685686,
+        "recall_by_class": {
+          "F&B": 0.7763157894736842,
+          "Housekeeping": 0.8611111111111112,
+          "Reception": 0.8194444444444444
+        },
+        "report": {
+          "F&B": {
+            "precision": 0.8194444444444444,
+            "recall": 0.7763157894736842,
+            "f1-score": 0.7972972972972973,
+            "support": 76.0
+          },
+          "Housekeeping": {
+            "precision": 0.8611111111111112,
+            "recall": 0.8611111111111112,
+            "f1-score": 0.8611111111111112,
+            "support": 72.0
+          },
+          "Reception": {
+            "precision": 0.7763157894736842,
+            "recall": 0.8194444444444444,
+            "f1-score": 0.7972972972972973,
+            "support": 72.0
+          },
+          "accuracy": 0.8181818181818182,
+          "macro avg": {
+            "precision": 0.8189571150097467,
+            "recall": 0.8189571150097464,
+            "f1-score": 0.8185685685685686,
+            "support": 220.0
+          },
+          "weighted avg": {
+            "precision": 0.8189659755449229,
+            "recall": 0.8181818181818182,
+            "f1-score": 0.8181818181818182,
+            "support": 220.0
+          }
+        }
+      },
+      "sentiment": {
+        "accuracy": 0.8272727272727273,
+        "f1_macro": 0.8269151138716355,
+        "recall_by_class": {
+          "neg": 0.8727272727272727,
+          "pos": 0.7818181818181819
+        },
+        "report": {
+          "neg": {
+            "precision": 0.8,
+            "recall": 0.8727272727272727,
+            "f1-score": 0.8347826086956521,
+            "support": 110.0
+          },
+          "pos": {
+            "precision": 0.86,
+            "recall": 0.7818181818181819,
+            "f1-score": 0.819047619047619,
+            "support": 110.0
+          },
+          "accuracy": 0.8272727272727273,
+          "macro avg": {
+            "precision": 0.8300000000000001,
+            "recall": 0.8272727272727273,
+            "f1-score": 0.8269151138716355,
+            "support": 220.0
+          },
+          "weighted avg": {
+            "precision": 0.83,
+            "recall": 0.8272727272727273,
+            "f1-score": 0.8269151138716355,
+            "support": 220.0
+          }
+        }
+      },
+      "calibration": {
+        "department": {
+          "ece": 0.055300250504702685,
+          "brier": 0.2729643529283101
+        },
+        "sentiment": {
+          "ece": 0.04148367307090509,
+          "brier": 0.23534777996313797
+        }
+      },
+      "conformal_department": {
+        "coverage": 0.9772727272727273,
+        "avg_set_size": 2.418181818181818
+      },
+      "priority_distribution": {
+        "HIGH": 0.4863636363636364,
+        "LOW": 0.45454545454545453,
+        "MEDIUM": 0.05,
+        "URGENT": 0.00909090909090909
+      },
+      "coverage": 0.9590909090909091,
+      "needs_review_rate": 0.04090909090909091,
+      "sla_summary": [
+        {
+          "department": "Reception",
+          "volume": 76,
+          "window_hours": 8,
+          "capacity_tickets": 112,
+          "backlog_estimated": 0,
+          "sla_target_hours": 2.0,
+          "estimated_avg_response_hours": 2.0,
+          "estimated_sla_hit_rate": 0.937
+        },
+        {
+          "department": "Housekeeping",
+          "volume": 72,
+          "window_hours": 8,
+          "capacity_tickets": 80,
+          "backlog_estimated": 0,
+          "sla_target_hours": 4.0,
+          "estimated_avg_response_hours": 4.0,
+          "estimated_sla_hit_rate": 0.942
+        },
+        {
+          "department": "F&B",
+          "volume": 72,
+          "window_hours": 8,
+          "capacity_tickets": 64,
+          "backlog_estimated": 8,
+          "sla_target_hours": 6.0,
+          "estimated_avg_response_hours": 7.31,
+          "estimated_sla_hit_rate": 0.875
+        }
+      ]
+    },
+    "reviews_colloquial.csv": {
+      "rows": 220,
+      "department": {
+        "accuracy": 0.9681818181818181,
+        "f1_macro": 0.9682749873160832,
+        "recall_by_class": {
+          "F&B": 0.9726027397260274,
+          "Housekeeping": 0.972972972972973,
+          "Reception": 0.958904109589041
+        },
+        "report": {
+          "F&B": {
+            "precision": 0.9726027397260274,
+            "recall": 0.9726027397260274,
+            "f1-score": 0.9726027397260274,
+            "support": 73.0
+          },
+          "Housekeeping": {
+            "precision": 0.9473684210526315,
+            "recall": 0.972972972972973,
+            "f1-score": 0.96,
+            "support": 74.0
+          },
+          "Reception": {
+            "precision": 0.9859154929577465,
+            "recall": 0.958904109589041,
+            "f1-score": 0.9722222222222222,
+            "support": 73.0
+          },
+          "accuracy": 0.9681818181818181,
+          "macro avg": {
+            "precision": 0.9686288845788017,
+            "recall": 0.9681599407626805,
+            "f1-score": 0.9682749873160832,
+            "support": 220.0
+          },
+          "weighted avg": {
+            "precision": 0.9685322461082283,
+            "recall": 0.9681818181818181,
+            "f1-score": 0.9682373737373736,
+            "support": 220.0
+          }
+        }
+      },
+      "sentiment": {
+        "accuracy": 0.990909090909091,
+        "f1_macro": 0.990909090909091,
+        "recall_by_class": {
+          "neg": 1.0,
+          "pos": 0.9819819819819819
+        },
+        "report": {
+          "neg": {
+            "precision": 0.9819819819819819,
+            "recall": 1.0,
+            "f1-score": 0.990909090909091,
+            "support": 109.0
+          },
+          "pos": {
+            "precision": 1.0,
+            "recall": 0.9819819819819819,
+            "f1-score": 0.990909090909091,
+            "support": 111.0
+          },
+          "accuracy": 0.990909090909091,
+          "macro avg": {
+            "precision": 0.990990990990991,
+            "recall": 0.990990990990991,
+            "f1-score": 0.990909090909091,
+            "support": 220.0
+          },
+          "weighted avg": {
+            "precision": 0.991072891072891,
+            "recall": 0.990909090909091,
+            "f1-score": 0.990909090909091,
+            "support": 220.0
+          }
+        }
+      },
+      "calibration": {
+        "department": {
+          "ece": 0.10665089282342079,
+          "brier": 0.06759860125560051
+        },
+        "sentiment": {
+          "ece": 0.10053822380881663,
+          "brier": 0.02682617210955848
+        }
+      },
+      "conformal_department": {
+        "coverage": 0.9954545454545455,
+        "avg_set_size": 2.2045454545454546
+      },
+      "priority_distribution": {
+        "LOW": 0.4909090909090909,
+        "HIGH": 0.4409090909090909,
+        "MEDIUM": 0.06363636363636363,
+        "URGENT": 0.004545454545454545
+      },
+      "coverage": 0.9454545454545454,
+      "needs_review_rate": 0.05454545454545454,
+      "sla_summary": [
+        {
+          "department": "Reception",
+          "volume": 71,
+          "window_hours": 8,
+          "capacity_tickets": 112,
+          "backlog_estimated": 0,
+          "sla_target_hours": 2.0,
+          "estimated_avg_response_hours": 2.0,
+          "estimated_sla_hit_rate": 0.939
+        },
+        {
+          "department": "Housekeeping",
+          "volume": 76,
+          "window_hours": 8,
+          "capacity_tickets": 80,
+          "backlog_estimated": 0,
+          "sla_target_hours": 4.0,
+          "estimated_avg_response_hours": 4.0,
+          "estimated_sla_hit_rate": 0.954
+        },
+        {
+          "department": "F&B",
+          "volume": 73,
+          "window_hours": 8,
+          "capacity_tickets": 64,
+          "backlog_estimated": 9,
+          "sla_target_hours": 6.0,
+          "estimated_avg_response_hours": 7.48,
+          "estimated_sla_hit_rate": 0.868
+        }
+      ]
+    },
+    "reviews_in_distribution.csv": {
+      "rows": 250,
+      "department": {
+        "accuracy": 0.916,
+        "f1_macro": 0.9160713114677309,
+        "recall_by_class": {
+          "F&B": 0.9058823529411765,
+          "Housekeeping": 0.9397590361445783,
+          "Reception": 0.9024390243902439
+        },
+        "report": {
+          "F&B": {
+            "precision": 0.9058823529411765,
+            "recall": 0.9058823529411765,
+            "f1-score": 0.9058823529411765,
+            "support": 85.0
+          },
+          "Housekeeping": {
+            "precision": 0.9069767441860465,
+            "recall": 0.9397590361445783,
+            "f1-score": 0.9230769230769231,
+            "support": 83.0
+          },
+          "Reception": {
+            "precision": 0.9367088607594937,
+            "recall": 0.9024390243902439,
+            "f1-score": 0.9192546583850931,
+            "support": 82.0
+          },
+          "accuracy": 0.916,
+          "macro avg": {
+            "precision": 0.9165226526289055,
+            "recall": 0.9160268044919996,
+            "f1-score": 0.9160713114677309,
+            "support": 250.0
+          },
+          "weighted avg": {
+            "precision": 0.9163567853988813,
+            "recall": 0.916,
+            "f1-score": 0.9159770664118491,
+            "support": 250.0
+          }
+        }
+      },
+      "sentiment": {
+        "accuracy": 0.92,
+        "f1_macro": 0.9199795147557774,
+        "recall_by_class": {
+          "neg": 0.9435483870967742,
+          "pos": 0.8968253968253969
+        },
+        "report": {
+          "neg": {
+            "precision": 0.9,
+            "recall": 0.9435483870967742,
+            "f1-score": 0.9212598425196851,
+            "support": 124.0
+          },
+          "pos": {
+            "precision": 0.9416666666666667,
+            "recall": 0.8968253968253969,
+            "f1-score": 0.9186991869918699,
+            "support": 126.0
+          },
+          "accuracy": 0.92,
+          "macro avg": {
+            "precision": 0.9208333333333334,
+            "recall": 0.9201868919610856,
+            "f1-score": 0.9199795147557774,
+            "support": 250.0
+          },
+          "weighted avg": {
+            "precision": 0.921,
+            "recall": 0.92,
+            "f1-score": 0.9199692721336662,
+            "support": 250.0
+          }
+        }
+      },
+      "calibration": {
+        "department": {
+          "ece": 0.09731923192865577,
+          "brier": 0.1445806160776661
+        },
+        "sentiment": {
+          "ece": 0.04603738826668533,
+          "brier": 0.12240382583647826
+        }
+      },
+      "conformal_department": {
+        "coverage": 0.988,
+        "avg_set_size": 2.4
+      },
+      "priority_distribution": {
+        "LOW": 0.476,
+        "HIGH": 0.428,
+        "MEDIUM": 0.088,
+        "URGENT": 0.008
+      },
+      "coverage": 0.9319999999999999,
+      "needs_review_rate": 0.068,
+      "sla_summary": [
+        {
+          "department": "Reception",
+          "volume": 79,
+          "window_hours": 8,
+          "capacity_tickets": 112,
+          "backlog_estimated": 0,
+          "sla_target_hours": 2.0,
+          "estimated_avg_response_hours": 2.0,
+          "estimated_sla_hit_rate": 0.95
+        },
+        {
+          "department": "Housekeeping",
+          "volume": 86,
+          "window_hours": 8,
+          "capacity_tickets": 80,
+          "backlog_estimated": 6,
+          "sla_target_hours": 4.0,
+          "estimated_avg_response_hours": 4.52,
+          "estimated_sla_hit_rate": 0.911
+        },
+        {
+          "department": "F&B",
+          "volume": 85,
+          "window_hours": 8,
+          "capacity_tickets": 64,
+          "backlog_estimated": 21,
+          "sla_target_hours": 6.0,
+          "estimated_avg_response_hours": 9.45,
+          "estimated_sla_hit_rate": 0.76
+        }
+      ]
+    },
+    "reviews_noisy.csv": {
+      "rows": 220,
+      "department": {
+        "accuracy": 0.8454545454545455,
+        "f1_macro": 0.8454632994750412,
+        "recall_by_class": {
+          "F&B": 0.775,
+          "Housekeeping": 0.8732394366197183,
+          "Reception": 0.8985507246376812
+        },
+        "report": {
+          "F&B": {
+            "precision": 0.9253731343283582,
+            "recall": 0.775,
+            "f1-score": 0.8435374149659864,
+            "support": 80.0
+          },
+          "Housekeeping": {
+            "precision": 0.8157894736842105,
+            "recall": 0.8732394366197183,
+            "f1-score": 0.8435374149659864,
+            "support": 71.0
+          },
+          "Reception": {
+            "precision": 0.8051948051948052,
+            "recall": 0.8985507246376812,
+            "f1-score": 0.8493150684931506,
+            "support": 69.0
+          },
+          "accuracy": 0.8454545454545455,
+          "macro avg": {
+            "precision": 0.848785804402458,
+            "recall": 0.8489300537524666,
+            "f1-score": 0.8454632994750412,
+            "support": 220.0
+          },
+          "weighted avg": {
+            "precision": 0.8523152042558599,
+            "recall": 0.8454545454545455,
+            "f1-score": 0.8453494972085971,
+            "support": 220.0
+          }
+        }
+      },
+      "sentiment": {
+        "accuracy": 0.8363636363636363,
+        "f1_macro": 0.8363636363636363,
+        "recall_by_class": {
+          "neg": 0.8761904761904762,
+          "pos": 0.8
+        },
+        "report": {
+          "neg": {
+            "precision": 0.8,
+            "recall": 0.8761904761904762,
+            "f1-score": 0.8363636363636363,
+            "support": 105.0
+          },
+          "pos": {
+            "precision": 0.8761904761904762,
+            "recall": 0.8,
+            "f1-score": 0.8363636363636363,
+            "support": 115.0
+          },
+          "accuracy": 0.8363636363636363,
+          "macro avg": {
+            "precision": 0.8380952380952381,
+            "recall": 0.8380952380952381,
+            "f1-score": 0.8363636363636363,
+            "support": 220.0
+          },
+          "weighted avg": {
+            "precision": 0.8398268398268398,
+            "recall": 0.8363636363636363,
+            "f1-score": 0.8363636363636363,
+            "support": 220.0
+          }
+        }
+      },
+      "calibration": {
+        "department": {
+          "ece": 0.07083839419006141,
+          "brier": 0.2723073494355882
+        },
+        "sentiment": {
+          "ece": 0.08275117894156633,
+          "brier": 0.2716258708900785
+        }
+      },
+      "conformal_department": {
+        "coverage": 0.9727272727272728,
+        "avg_set_size": 2.359090909090909
+      },
+      "priority_distribution": {
+        "LOW": 0.4772727272727273,
+        "HIGH": 0.42727272727272725,
+        "MEDIUM": 0.08181818181818182,
+        "URGENT": 0.013636363636363636
+      },
+      "coverage": 0.9227272727272727,
+      "needs_review_rate": 0.07727272727272727,
+      "sla_summary": [
+        {
+          "department": "Reception",
+          "volume": 77,
+          "window_hours": 8,
+          "capacity_tickets": 112,
+          "backlog_estimated": 0,
+          "sla_target_hours": 2.0,
+          "estimated_avg_response_hours": 2.0,
+          "estimated_sla_hit_rate": 0.944
+        },
+        {
+          "department": "Housekeeping",
+          "volume": 76,
+          "window_hours": 8,
+          "capacity_tickets": 80,
+          "backlog_estimated": 0,
+          "sla_target_hours": 4.0,
+          "estimated_avg_response_hours": 4.0,
+          "estimated_sla_hit_rate": 0.954
+        },
+        {
+          "department": "F&B",
+          "volume": 67,
+          "window_hours": 8,
+          "capacity_tickets": 64,
+          "backlog_estimated": 3,
+          "sla_target_hours": 6.0,
+          "estimated_avg_response_hours": 6.49,
+          "estimated_sla_hit_rate": 0.917
+        }
+      ]
+    },
+    "reviews_safety_critical.csv": {
+      "rows": 180,
+      "department": {
+        "accuracy": 0.7277777777777777,
+        "f1_macro": 0.7281515215567212,
+        "recall_by_class": {
+          "F&B": 0.65,
+          "Housekeeping": 1.0,
+          "Reception": 0.5333333333333333
+        },
+        "report": {
+          "F&B": {
+            "precision": 1.0,
+            "recall": 0.65,
+            "f1-score": 0.7878787878787878,
+            "support": 60.0
+          },
+          "Housekeeping": {
+            "precision": 0.5660377358490566,
+            "recall": 1.0,
+            "f1-score": 0.7228915662650602,
+            "support": 60.0
+          },
+          "Reception": {
+            "precision": 0.9142857142857143,
+            "recall": 0.5333333333333333,
+            "f1-score": 0.6736842105263158,
+            "support": 60.0
+          },
+          "accuracy": 0.7277777777777777,
+          "macro avg": {
+            "precision": 0.8267744833782569,
+            "recall": 0.7277777777777777,
+            "f1-score": 0.7281515215567212,
+            "support": 180.0
+          },
+          "weighted avg": {
+            "precision": 0.8267744833782569,
+            "recall": 0.7277777777777777,
+            "f1-score": 0.7281515215567212,
+            "support": 180.0
+          }
+        }
+      },
+      "sentiment": {
+        "accuracy": 0.9111111111111111,
+        "f1_macro": 0.784366576819407,
+        "recall_by_class": {
+          "neg": 1.0,
+          "pos": 0.4482758620689655
+        },
+        "report": {
+          "neg": {
+            "precision": 0.9041916167664671,
+            "recall": 1.0,
+            "f1-score": 0.949685534591195,
+            "support": 151.0
+          },
+          "pos": {
+            "precision": 1.0,
+            "recall": 0.4482758620689655,
+            "f1-score": 0.6190476190476191,
+            "support": 29.0
+          },
+          "accuracy": 0.9111111111111111,
+          "macro avg": {
+            "precision": 0.9520958083832336,
+            "recall": 0.7241379310344828,
+            "f1-score": 0.784366576819407,
+            "support": 180.0
+          },
+          "weighted avg": {
+            "precision": 0.9196274118429808,
+            "recall": 0.9111111111111111,
+            "f1-score": 0.8964160926425079,
+            "support": 180.0
+          }
+        }
+      },
+      "calibration": {
+        "department": {
+          "ece": 0.13650169648896915,
+          "brier": 0.34792762635197294
+        },
+        "sentiment": {
+          "ece": 0.22336956674991712,
+          "brier": 0.3694668712204783
+        }
+      },
+      "conformal_department": {
+        "coverage": 0.9555555555555556,
+        "avg_set_size": 2.316666666666667
+      },
+      "priority_distribution": {
+        "HIGH": 0.6277777777777778,
+        "URGENT": 0.25555555555555554,
+        "LOW": 0.07222222222222222,
+        "MEDIUM": 0.044444444444444446
+      },
+      "coverage": 0.7666666666666666,
+      "needs_review_rate": 0.23333333333333334,
+      "sla_summary": [
+        {
+          "department": "Reception",
+          "volume": 35,
+          "window_hours": 8,
+          "capacity_tickets": 112,
+          "backlog_estimated": 0,
+          "sla_target_hours": 2.0,
+          "estimated_avg_response_hours": 2.0,
+          "estimated_sla_hit_rate": 0.904
+        },
+        {
+          "department": "Housekeeping",
+          "volume": 106,
+          "window_hours": 8,
+          "capacity_tickets": 80,
+          "backlog_estimated": 26,
+          "sla_target_hours": 4.0,
+          "estimated_avg_response_hours": 6.27,
+          "estimated_sla_hit_rate": 0.713
+        },
+        {
+          "department": "F&B",
+          "volume": 39,
+          "window_hours": 8,
+          "capacity_tickets": 64,
+          "backlog_estimated": 0,
+          "sla_target_hours": 6.0,
+          "estimated_avg_response_hours": 6.0,
+          "estimated_sla_hit_rate": 0.892
+        }
+      ]
+    }
+  },
+  "comparison_vs_baseline": {
+    "baseline_reference": {
+      "test_department_f1": 0.9298522210893344,
+      "test_sentiment_f1": 0.907655926692285
+    },
+    "test_f1_delta": {
+      "department": -0.05798656661498436,
+      "sentiment": -0.007839938141886327
+    },
+    "benchmark_delta": {
+      "reviews_ambiguous.csv": {
+        "department_f1_delta": -0.00433746326833484,
+        "sentiment_f1_delta": 0.0,
+        "department_ece_delta": 0.055300250504702685,
+        "sentiment_ece_delta": 0.04148367307090509
+      },
+      "reviews_colloquial.csv": {
+        "department_f1_delta": -0.009128268051428745,
+        "sentiment_f1_delta": -0.004545360629163886,
+        "department_ece_delta": 0.10665089282342079,
+        "sentiment_ece_delta": 0.10053822380881663
+      },
+      "reviews_in_distribution.csv": {
+        "department_f1_delta": -0.01594245963227614,
+        "sentiment_f1_delta": 0.0,
+        "department_ece_delta": 0.09731923192865577,
+        "sentiment_ece_delta": 0.04603738826668533
+      },
+      "reviews_noisy.csv": {
+        "department_f1_delta": 0.0010239437977792587,
+        "sentiment_f1_delta": 0.004548929448204175,
+        "department_ece_delta": 0.07083839419006141,
+        "sentiment_ece_delta": 0.08275117894156633
+      },
+      "reviews_safety_critical.csv": {
+        "department_f1_delta": -0.27184847844327875,
+        "sentiment_f1_delta": -0.05055405810122793,
+        "department_ece_delta": 0.13650169648896915,
+        "sentiment_ece_delta": 0.22336956674991712
+      }
+    }
+  },
+  "artifacts": {
+    "department_model": "models/advanced_aps_pure/department_ensemble_advanced.joblib",
+    "sentiment_model": "models/advanced_aps_pure/sentiment_ensemble_advanced.joblib",
+    "conformal_model": "models/advanced_aps_pure/department_conformal_advanced.joblib",
+    "test_predictions": "outputs/advanced_aps_pure/test_predictions_advanced_20260426_125154.csv",
+    "confusion_department": "outputs/advanced_aps_pure/confusion_department_advanced.png",
+    "confusion_sentiment": "outputs/advanced_aps_pure/confusion_sentiment_advanced.png"
+  }
+}
