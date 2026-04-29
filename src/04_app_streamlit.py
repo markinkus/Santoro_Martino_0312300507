@@ -628,6 +628,8 @@ def mostra_confronto_safety() -> None:
                 "sentiment_f1_prima": prima.get("sentiment_f1"),
                 "sentiment_f1_dopo": dopo.get("sentiment_f1"),
                 "sentiment_f1_delta_pp": delta_pp("sentiment_f1"),
+                "coverage_prima": prima.get("coverage"),
+                "coverage_dopo": dopo.get("coverage"),
                 "recall_neg_delta_pp": delta_pp("sentiment_recall_neg"),
                 "coverage_delta_pp": delta_pp("coverage"),
                 "needs_review_delta_pp": delta_pp("needs_review_rate"),
@@ -654,6 +656,8 @@ def mostra_confronto_safety() -> None:
             "sentiment_f1_prima": "Sentiment F1 prima",
             "sentiment_f1_dopo": "Sentiment F1 dopo",
             "sentiment_f1_delta_pp": "Delta sentiment pp",
+            "coverage_prima": "Gestione automatica prima",
+            "coverage_dopo": "Gestione automatica dopo",
             "recall_neg_delta_pp": "Delta recall neg pp",
             "coverage_delta_pp": "Delta gestione automatica pp",
             "needs_review_delta_pp": "Delta controllo umano pp",
@@ -661,10 +665,45 @@ def mostra_confronto_safety() -> None:
     )
     st.dataframe(df_delta_display.round(4), use_container_width=True, hide_index=True)
 
-    chart_df = df_delta.set_index("benchmark")[
-        ["department_f1_delta_pp", "sentiment_f1_delta_pp", "coverage_delta_pp"]
+    if not focus.empty:
+        r = focus.iloc[0]
+
+        def valore_float(valore) -> float:
+            return 0.0 if pd.isna(valore) else float(valore)
+
+        grafico = pd.DataFrame(
+            [
+                {
+                    "Metrica": "F1 reparto",
+                    "Base pulito": valore_float(r["department_f1_prima"]),
+                    "Base irrobustito": valore_float(r["department_f1_dopo"]),
+                },
+                {
+                    "Metrica": "F1 sentiment",
+                    "Base pulito": valore_float(r["sentiment_f1_prima"]),
+                    "Base irrobustito": valore_float(r["sentiment_f1_dopo"]),
+                },
+                {
+                    "Metrica": "Gestione automatica",
+                    "Base pulito": valore_float(r["coverage_prima"]),
+                    "Base irrobustito": valore_float(r["coverage_dopo"]),
+                },
+            ]
+        )
+        st.markdown("#### Casi critici: prima e dopo l'irrobustimento")
+        st.caption(
+            "Il grafico mostra solo il benchmark dei casi critici. Così il confronto è leggibile: "
+            "base pulito contro base irrobustito sulle tre metriche operative principali."
+        )
+        st.bar_chart(grafico.set_index("Metrica"), height=320)
+
+    lettura = [
+        "Questa tabella non serve per scegliere il profilo di inferenza: serve a misurare cosa cambia quando aggiungo i casi critici al training.",
+        "I delta sono espressi in punti percentuali: `+5.0 pp` significa cinque punti percentuali in più rispetto al modello base pulito.",
+        "`Gestione automatica` è la coverage diagnostica: se scende, il sistema sta mandando più casi a controllo umano.",
+        "Un miglioramento sui casi critici può quindi avere un costo: più prudenza, più controlli e meno gestione automatica.",
     ]
-    st.bar_chart(chart_df)
+    st.info("\n\n".join(lettura))
 
     if report_md_path.exists() and st.checkbox("Mostra un report markdown generato", key="show_safety_report_md"):
         st.code(report_md_path.read_text(encoding="utf-8"), language="markdown")
@@ -1269,6 +1308,11 @@ def avvia_dashboard() -> None:
         st.caption(
             "Questa sezione serve ai docenti per ricreare dataset, modelli ed esperimenti senza usare il terminale. "
             "Ogni pulsante lancia gli script Python del progetto e mostra il log in italiano."
+        )
+        st.info(
+            "Per usare il prototipo non serve premere questi pulsanti: bastano le tab di predizione. "
+            "Questa pagina serve solo per verificare la riproducibilità: rigenerare dataset, riaddestrare modelli "
+            "o rilanciare gli esperimenti descritti nel report."
         )
 
         top_col1, top_col2 = st.columns([3, 1])
