@@ -13,23 +13,17 @@ pip install -r requirements.txt
 streamlit run src/04_app_streamlit.py
 ```
 
-Il comando sopra installa il profilo base, sufficiente per:
+Dopo l'avvio la dashboard espone tre aree:
+- `Predizione singola`: prova manuale con lettura guidata di reparto, sentiment, priorità, rischio e guardrail;
+- `Predizione batch (CSV)`: demo integrata con CSV già pronto oppure upload di CSV personalizzati;
+- `Strumenti e rigenerazione`: pulsanti guidati per ricreare dataset, modelli ed esperimenti.
+
+I comandi di avvio qui sopra installano il profilo base, sufficiente per:
 - dashboard Streamlit;
 - predizione batch o singola;
 - rigenerazione dataset e benchmark;
 - training e valutazione della base `pure` e `hardened`;
 - training e caricamento dei profili `advanced_aps_pure` e `advanced_aps_hardened`.
-
-Extra opzionale per eseguire il confronto con MiniLM (configurabile anche da dashboard):
-```bash
-pip install -r requisiti-transformer.txt
-```
-Il file `requisiti-transformer.txt` forza `torch==2.2.2+cpu` dalla wheel CPU-only, così il confronto non installa pacchetti CUDA inutili.
-
-Dopo l'avvio la dashboard espone tre aree:
-- `Predizione singola`: prova manuale con lettura guidata di reparto, sentiment, priorità, rischio e guardrail;
-- `Predizione batch (CSV)`: demo integrata con CSV già pronto oppure upload di CSV personalizzati;
-- `Strumenti e rigenerazione`: pulsanti guidati per ricreare dataset, modelli ed esperimenti.
 
 ## Percorso consigliato per test rapido
 1. Avviare la dashboard con il comando sopra.
@@ -46,6 +40,12 @@ python3 src/03_predict_batch.py \
   --percorso_input data/demo/reviews_trappola_demo.csv \
   --revisione_diagnostica
 ```
+
+Extra opzionale per eseguire il confronto con MiniLM (configurabile anche da dashboard):
+```bash
+pip install -r requisiti-transformer.txt
+```
+Il file `requisiti-transformer.txt` forza `torch==2.2.2+cpu` dalla wheel CPU-only, così il confronto non installa pacchetti CUDA inutili.
 
 ## Cosa contiene il repository
 - [src](src/): codice applicativo, training base, dashboard e script di riproduzione degli esperimenti;
@@ -118,6 +118,7 @@ Questi file sono inclusi per aiutare a capire subito il formato degli output sen
 - `outputs/confusion_sentiment.png`
 - `outputs/test_predictions_<timestamp>.csv`
 - `outputs/sla_test_summary_<timestamp>.json`
+
 Si ottengono rilanciando [02_train_evaluate.py](src/02_train_evaluate.py)
 
 `outputs/metrics.json` resta un alias compatibile della baseline hardened.
@@ -147,12 +148,13 @@ Si ottengono rilanciando [05_active_learning_cycle.py](src/05_active_learning_cy
 - `outputs/transformer_comparison_*.json`
 - `outputs/advanced_project_summary.json`
 - `outputs/base_calibration.json`
-- `outputs/thesis_visuals/*`
+
 Sono output di run temporanei, risultati sperimentali e documentazione.
 
 ### File importanti in `data/active_learning`
 - [data/active_learning/active_learning_queue_oracle_labeled.csv](data/active_learning/active_learning_queue_oracle_labeled.csv)
 - [data/active_learning/active_learning_v2_queue_labeled.csv](data/active_learning/active_learning_v2_queue_labeled.csv)
+
 Sono input riproducibili per ricreare i run finali di active learning, senza questi file si può simulare un nuovo ciclo, ma non ricostruire gli stessi esperimenti archiviati.
 
 ## Cosa fa la dashboard
@@ -183,7 +185,7 @@ python3 src/01_generate_dataset.py \
   --n_benchmark_colloquiali 220
 ```
 
-Chiarimento importante:
+Note:
 - il dataset non parte da un CSV reale preesistente, ma viene costruito da `src/01_generate_dataset.py` combinando template testuali, vocabolari di reparto, frasi positive/negative, casi ambigui, rumore lessicale e template safety dedicati;
 - il generatore miscela anche frasi colloquiali italiane, contesti realistici d'uso e lessico vicino alle recensioni spontanee;
 - il file principale viene salvato in `data/reviews_synth.csv`;
