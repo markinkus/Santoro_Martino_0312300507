@@ -1,5 +1,5 @@
-# Hotel Reviews ML
-Repository del ProjectWork 20 realizzato dallo studente Martino Santoro: sistema ML per il routing di recensioni hotel e la stima del sentiment, pensato per essere usato in due modi:
+# Da recensione a decisione operativa: prototipo ML per la gestione dei feedback alberghieri
+Repository del ProjectWork n.20 realizzato dallo studente Martino Santoro per la laurea triennale Pegaso: sistema ML per il routing di recensioni hotel e la stima del sentiment, pensato per essere usato in due modi:
 - esecuzione immediata con i modelli base già inclusi;
 - rigenerazione guidata di dataset, benchmark, modelli `pure`/`hardened`, `advanced_aps_*` ed esperimenti.
 
