@@ -4,9 +4,10 @@ Repository del ProjectWork n.20 realizzato dallo studente Martino Santoro per la
 - rigenerazione guidata di dataset, benchmark, modelli `pure`/`hardened`, `advanced_aps_*` ed esperimenti.
 
 Questa è la guida per l'avvio e la navigazione del repository.
-## Avvio rapido
+Il progetto è stato sviluppato e verificato su Linux. Per una riproduzione fedele dei comandi del README si consiglia Linux oppure Windows con WSL.
+
+## Avvio rapido dalla cartella del repository
 ```bash
-cd github_project_only
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
