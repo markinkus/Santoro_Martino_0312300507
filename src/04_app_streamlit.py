@@ -128,10 +128,10 @@ def profili_disponibili() -> list[str]:
 def descrizione_profilo(nome_profilo: str | None) -> str:
     """Descrive in modo breve la configurazione del profilo selezionato."""
     descrizioni = {
-        "baseline_pure": "Modello base pulito: casi critici usati solo per valutazione, senza aggiunte al training.",
-        "baseline_hardened": "Modello base irrobustito: usa esempi critici nel training con repeat=2.",
-        "advanced_aps_pure": "Modello avanzato APS pulito: ensemble e insiemi di reparti plausibili, senza aggiunta di casi critici nel training.",
-        "advanced_aps_hardened": "Modello avanzato APS irrobustito: ensemble, APS e aggiunta di casi critici con repeat=2.",
+        "baseline_pure": "Modello base pulito: casi critici usati solo per valutazione, senza aggiunte all'addestramento.",
+        "baseline_hardened": "Modello base irrobustito: usa esempi critici nell'addestramento con ripetizione=2.",
+        "advanced_aps_pure": "Modello avanzato APS pulito: ensemble e insiemi di reparti plausibili, senza aggiunta di casi critici nell'addestramento.",
+        "advanced_aps_hardened": "Modello avanzato APS irrobustito: ensemble, APS e aggiunta di casi critici con ripetizione=2.",
         "active_learning_oracle": "Active learning oracle: riaddestramento da coda etichettata ideale.",
         "active_learning_v2_no_replay": "Active learning senza replay: riaddestramento solo sui nuovi casi etichettati.",
         "active_learning_v2_replay": "Active learning con replay: riaddestramento con nuovi casi e dataset base.",
@@ -698,9 +698,9 @@ def mostra_confronto_safety() -> None:
         st.bar_chart(grafico.set_index("Metrica"), height=320)
 
     lettura = [
-        "Questa tabella non serve per scegliere il profilo di inferenza: serve a misurare cosa cambia quando aggiungo i casi critici al training.",
+        "Questa tabella non serve per scegliere il profilo di inferenza: serve a misurare cosa cambia quando aggiungo i casi critici all'addestramento.",
         "I delta sono espressi in punti percentuali: `+5.0 pp` significa cinque punti percentuali in più rispetto al modello base pulito.",
-        "`Gestione automatica` è la coverage diagnostica: se scende, il sistema sta mandando più casi a controllo umano.",
+        "`Gestione automatica` è la copertura diagnostica: se scende, il sistema sta mandando più casi a controllo umano.",
         "Un miglioramento sui casi critici può quindi avere un costo: più prudenza, più controlli e meno gestione automatica.",
     ]
     st.info("\n\n".join(lettura))
@@ -911,7 +911,7 @@ def avvia_dashboard() -> None:
             options=profili,
             index=indice_default,
             format_func=etichetta_profilo,
-            help="base pulita: casi critici solo in valutazione | irrobustita: casi critici usati anche nel training",
+            help="base pulita: casi critici solo in valutazione | irrobustita: casi critici usati anche nell'addestramento",
         )
         if profilo_default == "baseline_pure":
             st.sidebar.caption("Profilo predefinito: modello base pulito, cioè il riferimento principale del progetto.")
@@ -1295,7 +1295,7 @@ def avvia_dashboard() -> None:
                     )
 
                     st.download_button(
-                        label="Scarica SLA summary JSON",
+                        label="Scarica riepilogo SLA JSON",
                         data=json.dumps({"rows": sla_df.to_dict(orient="records")}, ensure_ascii=False, indent=2).encode(
                             "utf-8"
                         ),
@@ -1363,7 +1363,7 @@ def avvia_dashboard() -> None:
 
         with st.expander("Modelli base", expanded=False):
             st.write("Ricrea separatamente il modello base pulito e quello irrobustito.")
-            st.caption("Pulito: i casi critici restano solo valutazione. Irrobustito: i casi critici vengono aggiunti al training con repeat=2.")
+            st.caption("Pulito: i casi critici restano solo valutazione. Irrobustito: i casi critici vengono aggiunti all'addestramento con ripetizione=2.")
             col_base_pure, col_base_hardened = st.columns(2)
             with col_base_pure:
                 if st.button("Ricrea base pulito", key="btn_regen_baseline_pure"):
@@ -1372,7 +1372,7 @@ def avvia_dashboard() -> None:
                         "Rigenerazione modello base pulito",
                         [
                             {
-                                "label": "Training modello base pulito",
+                                "label": "Addestramento modello base pulito",
                                 "cmd": [
                                     sys.executable,
                                     "src/02_train_evaluate.py",
@@ -1397,7 +1397,7 @@ def avvia_dashboard() -> None:
                         "Rigenerazione modello base irrobustito",
                         [
                             {
-                                "label": "Training modello base irrobustito",
+                                "label": "Addestramento modello base irrobustito",
                                 "cmd": [
                                     sys.executable,
                                     "src/02_train_evaluate.py",
@@ -1444,7 +1444,7 @@ def avvia_dashboard() -> None:
                             "Rigenerazione avanzato APS pulito",
                             [
                                 {
-                                    "label": "Training avanzato APS pulito",
+                                    "label": "Addestramento avanzato APS pulito",
                                     "cmd": [
                                         sys.executable,
                                         "src/07_train_advanced.py",
@@ -1473,7 +1473,7 @@ def avvia_dashboard() -> None:
                             "Rigenerazione avanzato APS irrobustito",
                             [
                                 {
-                                    "label": "Training avanzato APS irrobustito",
+                                    "label": "Addestramento avanzato APS irrobustito",
                                     "cmd": [
                                         sys.executable,
                                         "src/07_train_advanced.py",
@@ -1552,7 +1552,7 @@ def avvia_dashboard() -> None:
                     "Rigenerazione confronto casi critici prima/dopo",
                     [
                         {
-                            "label": "Training modello base pulito safety_exp",
+                            "label": "Addestramento modello base pulito esperimento sicurezza",
                             "cmd": [
                                 sys.executable,
                                 "src/02_train_evaluate.py",
@@ -1570,7 +1570,7 @@ def avvia_dashboard() -> None:
                             ],
                         },
                         {
-                            "label": "Training modello base irrobustito safety_exp",
+                            "label": "Addestramento modello base irrobustito esperimento sicurezza",
                             "cmd": [
                                 sys.executable,
                                 "src/02_train_evaluate.py",
@@ -1645,7 +1645,7 @@ def avvia_dashboard() -> None:
                                 ],
                             },
                             {
-                                "label": "Training modelli oracle",
+                                "label": "Addestramento modelli oracle",
                                 "cmd": [
                                     sys.executable,
                                     "src/02_train_evaluate.py",
@@ -1693,7 +1693,7 @@ def avvia_dashboard() -> None:
                                 ],
                             },
                             {
-                                "label": "Training modelli v2 no replay",
+                                "label": "Addestramento modelli v2 senza replay",
                                 "cmd": [
                                     sys.executable,
                                     "src/02_train_evaluate.py",
@@ -1745,7 +1745,7 @@ def avvia_dashboard() -> None:
                                 ],
                             },
                             {
-                                "label": "Training modelli v2 replay",
+                                "label": "Addestramento modelli v2 con replay",
                                 "cmd": [
                                     sys.executable,
                                     "src/02_train_evaluate.py",

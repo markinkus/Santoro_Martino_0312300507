@@ -161,7 +161,7 @@ def esegui_confronto_transformer():
     baseline_dep = joblib.load(args.modello_reparto_baseline)
     baseline_sent = joblib.load(args.modello_sentiment_baseline)
 
-    print("[INFO] Training transformer lightweight + calibration...")
+    print("[INFO] Addestramento transformer leggero e calibrazione...")
     encoder, tr_dep, tr_sent = _addestra_modelli_transformer(
         x_train_text=x_train,
         y_dep_train=y_dep_train,
@@ -231,9 +231,9 @@ def esegui_confronto_transformer():
 
     print(f"[OK] Confronto salvato: {out_path}")
     print(
-        "[TEST] baseline dep/sent f1="
+        "[TEST] base reparto/sentiment F1="
         f"{baseline_test['department']['f1_macro']:.4f}/{baseline_test['sentiment']['f1_macro']:.4f} | "
-        "transformer dep/sent f1="
+        "transformer reparto/sentiment F1="
         f"{transformer_test['department']['f1_macro']:.4f}/{transformer_test['sentiment']['f1_macro']:.4f}"
     )
 

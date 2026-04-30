@@ -719,7 +719,7 @@ def _stampa_riassunto(df: pd.DataFrame, etichetta: str) -> None:
     """Stampa un riepilogo compatto della distribuzione del dataset."""
     dep_dist = df["department"].value_counts().to_dict()
     sent_dist = df["sentiment"].value_counts().to_dict()
-    print(f"[INFO] {etichetta}: rows={len(df)} | department={dep_dist} | sentiment={sent_dist}")
+    print(f"[INFO] {etichetta}: righe={len(df)} | reparto={dep_dist} | sentiment={sent_dist}")
 
 
 def esegui_generazione_dataset() -> None:
@@ -738,7 +738,7 @@ def esegui_generazione_dataset() -> None:
     args = parser.parse_args()
 
     if args.n < 200 or args.n > 600:
-        print("[WARN] Pegaso consiglia 200-600 record per il dataset principale.")
+        print("[AVVISO] Pegaso consiglia 200-600 record per il dataset principale.")
 
     main_df = genera_dataset(n=args.n, seed=args.seed, profilo="train")
 
@@ -771,7 +771,7 @@ def esegui_generazione_dataset() -> None:
     safety_df.to_csv(safety_path, index=False)
     colloquial_df.to_csv(colloquial_path, index=False)
 
-    print(f"[OK] Benchmark split salvati in: {bench_dir}")
+    print(f"[OK] Suddivisioni benchmark salvate in: {bench_dir}")
     _stampa_riassunto(id_df, "benchmark_in_distribution")
     _stampa_riassunto(amb_df, "benchmark_ambiguous")
     _stampa_riassunto(noisy_df, "benchmark_noisy")

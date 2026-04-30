@@ -332,11 +332,11 @@ def esegui_ciclo_apprendimento_attivo():
 
     print(f"[OK] Coda active learning salvata: {percorso_coda_output}")
     print(
-        f"[INFO] queue_rows={len(queue_df)} | "
-        f"mean_uncertainty={queue_df['uncertainty_score'].mean():.4f} | "
-        f"mean_diversity={queue_df['diversity_score'].mean():.4f} | "
-        f"mean_business={queue_df['business_cost_score'].mean():.4f} | "
-        f"mean_acquisition={queue_df['acquisition_score'].mean():.4f}"
+        f"[INFO] righe_coda={len(queue_df)} | "
+        f"incertezza_media={queue_df['uncertainty_score'].mean():.4f} | "
+        f"diversita_media={queue_df['diversity_score'].mean():.4f} | "
+        f"costo_operativo_medio={queue_df['business_cost_score'].mean():.4f} | "
+        f"acquisizione_media={queue_df['acquisition_score'].mean():.4f}"
     )
 
     if args.coda_etichettata:
@@ -356,7 +356,7 @@ def esegui_ciclo_apprendimento_attivo():
 
         if args.riaddestra:
             cmd = ["python3", "src/02_train_evaluate.py", "--dati", args.percorso_dataset_output]
-            print("[INFO] Avvio retraining automatico...")
+            print("[INFO] Avvio riaddestramento automatico...")
             subprocess.run(cmd, check=True)
 
 

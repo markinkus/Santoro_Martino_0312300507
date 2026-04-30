@@ -299,7 +299,7 @@ def esegui_addestramento_e_valutazione():
         dest="percorso_augment_sicurezza",
         type=str,
         default="",
-        help="CSV opzionale con hard-cases safety da aggiungere al train (stesse colonne base).",
+        help="CSV opzionale con casi critici di sicurezza da aggiungere al training (stesse colonne base).",
     )
     parser.add_argument(
         "--ripetizioni_augment_sicurezza",
@@ -307,7 +307,7 @@ def esegui_addestramento_e_valutazione():
         dest="ripetizioni_augment_sicurezza",
         type=int,
         default=1,
-        help="Numero repliche del dataset safety da aggiungere (0 disabilita).",
+        help="Numero repliche del dataset di sicurezza da aggiungere (0 disabilita).",
     )
     parser.add_argument("--quota_test", "--test_size", dest="quota_test", type=float, default=0.20)
     parser.add_argument("--seed", type=int, default=42)
@@ -342,7 +342,7 @@ def esegui_addestramento_e_valutazione():
             required = {"title", "body", "department", "sentiment"}
             if not required.issubset(set(aug_df.columns)):
                 missing = sorted(list(required - set(aug_df.columns)))
-                raise ValueError(f"Dataset safety incompleto. Colonne mancanti: {missing}")
+                raise ValueError(f"Dataset di sicurezza incompleto. Colonne mancanti: {missing}")
 
             aug_df = _prepara_dataframe(aug_df)
             extras = [aug_df.copy() for _ in range(int(args.ripetizioni_augment_sicurezza))]
@@ -354,11 +354,11 @@ def esegui_addestramento_e_valutazione():
                 "repeat": int(args.ripetizioni_augment_sicurezza),
             }
             print(
-                f"[INFO] Safety augmentation attiva: +{augmentation_info['rows_added']} righe "
+                f"[INFO] Aumento dati di sicurezza attivo: +{augmentation_info['rows_added']} righe "
                 f"da {augmentation_info['path']}"
             )
         else:
-            print(f"[WARN] augment_safety_path non trovato: {aug_path}. Proseguo senza augmentation.")
+            print(f"[AVVISO] Percorso augment_safety_path non trovato: {aug_path}. Proseguo senza aumento dati.")
 
     x = df["text"].values
     y_dep = df["department"].values
@@ -387,7 +387,7 @@ def esegui_addestramento_e_valutazione():
     )
     x_train, x_cal, y_dep_train, y_dep_cal, y_sent_train, y_sent_cal, _, _ = split_pool
 
-    print("[INFO] Grid search Department...")
+    print("[INFO] Ricerca griglia per reparto...")
     dep_model, dep_best_params, dep_grid_top = _addestra_con_grid_search(
         x_train=x_train,
         y_train=np.array(y_dep_train),
@@ -397,7 +397,7 @@ def esegui_addestramento_e_valutazione():
         verbose=args.verbose_grid,
     )
 
-    print("[INFO] Grid search Sentiment...")
+    print("[INFO] Ricerca griglia per sentiment...")
     sent_model, sent_best_params, sent_grid_top = _addestra_con_grid_search(
         x_train=x_train,
         y_train=np.array(y_sent_train),
@@ -484,13 +484,13 @@ def esegui_addestramento_e_valutazione():
         dep_cm,
         dep_classes,
         f"{args.cartella_output}/confusion_department.png",
-        "Confusion Matrix - Department",
+        "Matrice di confusione - Reparto",
     )
     salva_matrice_confusione(
         sent_cm,
         sent_classes,
         f"{args.cartella_output}/confusion_sentiment.png",
-        "Confusion Matrix - Sentiment",
+        "Matrice di confusione - Sentiment",
     )
 
     test_pred_path = f"{args.cartella_output}/test_predictions_{ts}.csv"
@@ -573,7 +573,7 @@ def esegui_addestramento_e_valutazione():
             "sentiment": sent_thresholds,
             "quantile": args.quantile_soglia,
             "floor": args.minimo_soglia,
-            "note": "Solo diagnostica; full-auto non blocca predizioni",
+            "note": "Solo diagnostica, la modalità automatica non blocca le predizioni",
         },
         "test_split": {
             "department": dep_metrics,
@@ -626,22 +626,22 @@ def esegui_addestramento_e_valutazione():
     sla_path = f"{args.cartella_output}/sla_test_summary_{ts}.json"
     salva_json({"rows": test_sla_df.to_dict(orient="records")}, sla_path)
 
-    print("[OK] Training e valutazione completati.")
+    print("[OK] Addestramento e valutazione completati.")
     print(
-        f"[METRICS] Department accuracy={dep_metrics['accuracy']:.4f} | "
-        f"f1_macro={dep_metrics['f1_macro']:.4f}"
+        f"[METRICHE] Reparto accuratezza={dep_metrics['accuracy']:.4f} | "
+        f"F1 macro={dep_metrics['f1_macro']:.4f}"
     )
     print(
-        f"[METRICS] Sentiment  accuracy={sent_metrics['accuracy']:.4f} | "
-        f"f1_macro={sent_metrics['f1_macro']:.4f}"
+        f"[METRICHE] Sentiment accuratezza={sent_metrics['accuracy']:.4f} | "
+        f"F1 macro={sent_metrics['f1_macro']:.4f}"
     )
     if args.revisione_diagnostica:
-        print(f"[DIAGNOSTIC] coverage={coverage:.4f} | needs_review_rate={needs_review_rate:.4f}")
-    print(f"[ROBUSTNESS] multi-seed dep_f1_mean={multi_seed['department_f1_macro']['mean']:.4f}")
-    print(f"[ROBUSTNESS] multi-seed sent_f1_mean={multi_seed['sentiment_f1_macro']['mean']:.4f}")
-    print(f"[SAVED] {metrics_path}")
-    print(f"[SAVED] {thresholds_path}")
-    print(f"[SAVED] {test_pred_path}")
+        print(f"[DIAGNOSTICA] copertura={coverage:.4f} | tasso_controllo_umano={needs_review_rate:.4f}")
+    print(f"[ROBUSTEZZA] media_F1_reparto_multi_seed={multi_seed['department_f1_macro']['mean']:.4f}")
+    print(f"[ROBUSTEZZA] media_F1_sentiment_multi_seed={multi_seed['sentiment_f1_macro']['mean']:.4f}")
+    print(f"[SALVATO] {metrics_path}")
+    print(f"[SALVATO] {thresholds_path}")
+    print(f"[SALVATO] {test_pred_path}")
 
 
 if __name__ == "__main__":

@@ -219,7 +219,7 @@ def esegui_addestramento_avanzato() -> None:
         dest="percorso_augment_sicurezza",
         type=str,
         default="",
-        help="CSV opzionale con hard-cases safety da aggiungere al train (stesse colonne base).",
+        help="CSV opzionale con casi critici di sicurezza da aggiungere al training (stesse colonne base).",
     )
     parser.add_argument(
         "--ripetizioni_augment_sicurezza",
@@ -227,10 +227,10 @@ def esegui_addestramento_avanzato() -> None:
         dest="ripetizioni_augment_sicurezza",
         type=int,
         default=1,
-        help="Numero repliche del dataset safety da aggiungere (0 disabilità).",
+        help="Numero repliche del dataset di sicurezza da aggiungere (0 disabilita).",
     )
     parser.add_argument("--quota_test", "--test_size", dest="quota_test", type=float, default=0.20)
-    parser.add_argument("--quota_meta", "--meta_size", dest="quota_meta", type=float, default=0.25, help="Quota del train_pool usata come meta/calibrazione")
+    parser.add_argument("--quota_meta", "--meta_size", dest="quota_meta", type=float, default=0.25, help="Quota del pool di addestramento usata come meta/calibrazione")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--alpha_conformal", "--conformal_alpha", dest="alpha_conformal", type=float, default=0.10)
     parser.add_argument("--metodo_conformal", "--conformal_method", dest="metodo_conformal", type=str, default="aps", choices=["aps", "threshold"])
@@ -259,7 +259,7 @@ def esegui_addestramento_avanzato() -> None:
             required = {"title", "body", "department", "sentiment"}
             if not required.issubset(set(aug_df.columns)):
                 missing = sorted(list(required - set(aug_df.columns)))
-                raise ValueError(f"Dataset safety incompleto. Colonne mancanti: {missing}")
+                raise ValueError(f"Dataset di sicurezza incompleto. Colonne mancanti: {missing}")
 
             aug_df = _prepara_dataframe(aug_df)
             extras = [aug_df.copy() for _ in range(int(args.ripetizioni_augment_sicurezza))]
@@ -271,11 +271,11 @@ def esegui_addestramento_avanzato() -> None:
                 "repeat": int(args.ripetizioni_augment_sicurezza),
             }
             print(
-                f"[INFO] Safety augmentation attiva: +{augmentation_info['rows_added']} righe "
+                f"[INFO] Aumento dati di sicurezza attivo: +{augmentation_info['rows_added']} righe "
                 f"da {augmentation_info['path']}"
             )
         else:
-            print(f"[WARN] augment_safety_path non trovato: {aug_path}. Proseguo senza augmentation.")
+            print(f"[AVVISO] Percorso augment_safety_path non trovato: {aug_path}. Proseguo senza aumento dati.")
     x = df["text"].values
     y_dep = df["department"].values
     y_sent = df["sentiment"].values
@@ -301,7 +301,7 @@ def esegui_addestramento_avanzato() -> None:
         stratify=y_joint_pool,
     )
 
-    print("[INFO] Calibration probe (department): sigmoid vs isotonic")
+    print("[INFO] Sonda di calibrazione (reparto): sigmoidale vs isotonica")
     dep_cal_method, dep_probe = sonda_calibrazione_logistica_word(
         compito="department",
         x_train=x_train,
@@ -311,7 +311,7 @@ def esegui_addestramento_avanzato() -> None:
         seed=args.seed,
     )
 
-    print("[INFO] Calibration probe (sentiment): sigmoid vs isotonic")
+    print("[INFO] Sonda di calibrazione (sentiment): sigmoidale vs isotonica")
     sent_cal_method, sent_probe = sonda_calibrazione_logistica_word(
         compito="sentiment",
         x_train=x_train,
@@ -321,19 +321,19 @@ def esegui_addestramento_avanzato() -> None:
         seed=args.seed,
     )
 
-    print(f"[INFO] Chosen calibration methods -> dep={dep_cal_method} | sent={sent_cal_method}")
+    print(f"[INFO] Metodi di calibrazione scelti -> reparto={dep_cal_method} | sentiment={sent_cal_method}")
 
     dep_model = StackedTextEnsemble(compito="department", metodo_calibrazione=dep_cal_method, seed=args.seed)
     sent_model = StackedTextEnsemble(compito="sentiment", metodo_calibrazione=sent_cal_method, seed=args.seed)
 
-    print("[INFO] Training stacked ensemble department...")
+    print("[INFO] Addestramento ensemble stacked per reparto...")
     dep_model.fit(
         x_train=np.array(x_train),
         y_train=np.array(y_dep_train),
         x_meta=np.array(x_meta),
         y_meta=np.array(y_dep_meta),
     )
-    print("[INFO] Training stacked ensemble sentiment...")
+    print("[INFO] Addestramento ensemble stacked per sentiment...")
     sent_model.fit(
         x_train=np.array(x_train),
         y_train=np.array(y_sent_train),
@@ -407,13 +407,13 @@ def esegui_addestramento_avanzato() -> None:
         dep_cm,
         dep_classes,
         f"{args.cartella_output}/confusion_department_advanced.png",
-        "Advanced Confusion Matrix - Department",
+        "Matrice di confusione avanzata - Reparto",
     )
     _salva_matrice_confusione(
         sent_cm,
         sent_classes,
         f"{args.cartella_output}/confusion_sentiment_advanced.png",
-        "Advanced Confusion Matrix - Sentiment",
+        "Matrice di confusione avanzata - Sentiment",
     )
 
     # benchmark sets
@@ -487,7 +487,7 @@ def esegui_addestramento_avanzato() -> None:
             "sentiment": sent_thresholds,
             "quantile": float(args.quantile_soglia),
             "floor": float(args.minimo_soglia),
-            "note": "Solo diagnostica; full-auto non blocca predizioni",
+            "note": "Solo diagnostica; la modalità automatica non blocca le predizioni",
         },
         "test_split": test_result,
         "benchmarks": bench_results,
@@ -529,28 +529,28 @@ def esegui_addestramento_avanzato() -> None:
         thresholds_path,
     )
 
-    print("[OK] Training avanzato completato.")
+    print("[OK] Addestramento avanzato completato.")
     print(
-        f"[METRICS] Department accuracy={test_result['department']['accuracy']:.4f} | "
-        f"f1_macro={test_result['department']['f1_macro']:.4f}"
+        f"[METRICHE] Reparto accuratezza={test_result['department']['accuracy']:.4f} | "
+        f"F1 macro={test_result['department']['f1_macro']:.4f}"
     )
     print(
-        f"[METRICS] Sentiment  accuracy={test_result['sentiment']['accuracy']:.4f} | "
-        f"f1_macro={test_result['sentiment']['f1_macro']:.4f}"
+        f"[METRICHE] Sentiment accuratezza={test_result['sentiment']['accuracy']:.4f} | "
+        f"F1 macro={test_result['sentiment']['f1_macro']:.4f}"
     )
     print(
-        "[CALIBRATION] ECE dep/sent="
+        "[CALIBRAZIONE] ECE reparto/sentiment="
         f"{test_result['calibration']['department']['ece']:.4f}/"
         f"{test_result['calibration']['sentiment']['ece']:.4f}"
     )
     print(
-        "[CONFORMAL] coverage/avg_set_size="
+        "[CONFORMAL] copertura/dimensione_media_set="
         f"{test_result['conformal_department']['coverage']:.4f}/"
         f"{test_result['conformal_department']['avg_set_size']:.4f}"
     )
-    print(f"[SAVED] {metrics_path}")
-    print(f"[SAVED] {thresholds_path}")
-    print(f"[SAVED] {test_pred_path}")
+    print(f"[SALVATO] {metrics_path}")
+    print(f"[SALVATO] {thresholds_path}")
+    print(f"[SALVATO] {test_pred_path}")
 
 
 if __name__ == "__main__":

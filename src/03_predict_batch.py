@@ -45,7 +45,7 @@ def esegui_predizione_lotto():
         dest="percorso_output",
         type=str,
         default=None,
-        help="CSV output (default: outputs/predictions_TIMESTAMP.csv)",
+        help="CSV di output (predefinito: outputs/predictions_TIMESTAMP.csv)",
     )
     parser.add_argument("--modello_reparto", "--dep_model", dest="modello_reparto", type=str, default="models/department_model.joblib")
     parser.add_argument("--modello_sentiment", "--sent_model", dest="modello_sentiment", type=str, default="models/sentiment_model.joblib")
@@ -56,7 +56,7 @@ def esegui_predizione_lotto():
         "--diagnostic_review",
         dest="revisione_diagnostica",
         action="store_true",
-        help="Aggiunge needs_review diagnostico",
+        help="Aggiunge il controllo umano consigliato",
     )
     parser.add_argument(
         "--disabilita_guardrail_sentiment",
@@ -135,7 +135,7 @@ def esegui_predizione_lotto():
         out_df["explain_dep_top_tokens"] = token_reparto
         out_df["explain_sent_top_tokens"] = token_sentiment
     elif not args.disabilita_spiegazioni:
-        print("[INFO] Explainability token-level non disponibile per questo tipo di modello.")
+        print("[INFO] Spiegabilità a livello token non disponibile per questo tipo di modello.")
 
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     percorso_output = args.percorso_output or f"outputs/predictions_{ts}.csv"
@@ -147,13 +147,13 @@ def esegui_predizione_lotto():
     salva_json({"rows": sla_df.to_dict(orient="records")}, sla_path)
 
     print(f"[OK] Predizioni salvate: {percorso_output}")
-    print(f"[OK] SLA summary: {sla_path}")
+    print(f"[OK] Riepilogo SLA: {sla_path}")
     if "sentiment_guardrail_applied" in out_df.columns:
-        print(f"[GUARDRAIL] applied_rate={out_df['sentiment_guardrail_applied'].mean():.4f}")
+        print(f"[CONTROLLO] tasso_applicazione_guardrail={out_df['sentiment_guardrail_applied'].mean():.4f}")
     if args.revisione_diagnostica and "needs_review_diag" in out_df.columns:
         print(
-            f"[DIAGNOSTIC] coverage={(1.0 - out_df['needs_review_diag'].mean()):.4f} | "
-            f"needs_review_rate={out_df['needs_review_diag'].mean():.4f}"
+            f"[DIAGNOSTICA] copertura={(1.0 - out_df['needs_review_diag'].mean()):.4f} | "
+            f"tasso_controllo_umano={out_df['needs_review_diag'].mean():.4f}"
         )
     print(out_df.head(5).to_string(index=False))
 

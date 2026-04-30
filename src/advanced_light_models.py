@@ -560,7 +560,7 @@ class SplitConformal:
 
     def predict_sets(self, y_proba: np.ndarray) -> list[list[str]]:
         if self.classes_ is None or self.qhat is None:
-            raise RuntimeError("SplitConformal non fitted.")
+            raise RuntimeError("SplitConformal non addestrato.")
 
         out: list[list[str]] = []
         if self.method == "aps":

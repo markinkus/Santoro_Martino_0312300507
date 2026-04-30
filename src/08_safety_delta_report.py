@@ -40,7 +40,7 @@ def _delta(a: dict, b: dict) -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--before", type=str, required=True, help="metrics.json run baseline/prima")
+    parser.add_argument("--before", type=str, required=True, help="metrics.json della run base/prima")
     parser.add_argument("--after", type=str, required=True, help="metrics.json run migliorato/dopo")
     parser.add_argument("--safety_benchmark", type=str, default="reviews_safety_critical.csv")
     parser.add_argument("--out_json", type=str, default="outputs/safety_delta_report.json")
@@ -77,10 +77,10 @@ def main() -> None:
     salva_json(report, args.out_json)
 
     lines = [
-        "# Safety Delta Report",
+        "# Report delta sicurezza",
         "",
-        f"- before: `{args.before}`",
-        f"- after: `{args.after}`",
+        f"- prima: `{args.before}`",
+        f"- dopo: `{args.after}`",
         "",
     ]
 
@@ -89,28 +89,28 @@ def main() -> None:
         d = row["delta_after_minus_before"]
         lines.append(f"## {sec}")
         lines.append(
-            "- delta department_f1: "
+            "- delta F1 reparto: "
             f"{d.get('department_f1', 0.0):+.4f} | "
-            "delta sentiment_f1: "
+            "delta F1 sentiment: "
             f"{d.get('sentiment_f1', 0.0):+.4f}"
         )
         lines.append(
-            "- delta sentiment_recall_neg: "
+            "- delta richiamo sentiment negativo: "
             f"{d.get('sentiment_recall_neg', 0.0):+.4f} | "
-            "delta sentiment_recall_pos: "
+            "delta richiamo sentiment positivo: "
             f"{d.get('sentiment_recall_pos', 0.0):+.4f}"
         )
         cov = d.get("coverage")
         nrr = d.get("needs_review_rate")
         if cov is not None and nrr is not None:
-            lines.append(f"- delta coverage: {cov:+.4f} | delta needs_review_rate: {nrr:+.4f}")
+            lines.append(f"- delta copertura: {cov:+.4f} | delta tasso controllo umano: {nrr:+.4f}")
         lines.append("")
 
     garantisci_cartella_padre(args.out_md)
     Path(args.out_md).write_text("\n".join(lines), encoding="utf-8")
 
-    print(f"[OK] JSON report: {args.out_json}")
-    print(f"[OK] Markdown report: {args.out_md}")
+    print(f"[OK] Report JSON: {args.out_json}")
+    print(f"[OK] Report Markdown: {args.out_md}")
 
 
 if __name__ == "__main__":
